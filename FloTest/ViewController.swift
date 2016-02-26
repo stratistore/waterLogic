@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
 	private var completeSwitch : Bool? = nil
 	private var startingBucketSize : String! = "Large"
 	private var stepNum : Int = 0
@@ -16,19 +18,67 @@ class ViewController: UIViewController {
 	private var goal : Int = 0
 
 
+	// MARK: - Setup
+	// MARK: o Display Solution
+	@IBOutlet weak var tbl_SolutionTable: UITableView!
+	var actionItems = [ActionItem]()
+
+	// MARK: o New Game
+	@IBOutlet weak var btn_StartGame: UIButton!
+
+	// MARK: o Get Input
+	// MARK: > Bucket 1 Size
+	@IBOutlet weak var txt_Bucket1Size: UITextField!
+	// MARK: > Bucket 2 Size
+	@IBOutlet weak var txt_Bucket2Size: UITextField!
+
+	// MARK: > Target Amount
+	@IBOutlet weak var txt_TargetAmount: UITextField!
+	// MARK: > Manual or Automatic
+
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		tbl_SolutionTable.dataSource = self
+		tbl_SolutionTable.delegate = self
+		tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
+
+
+		//MARK:CONVERT INPUTS TO VALUES
+		txt_Bucket1Size.text = "5"
+		txt_Bucket2Size.text = "3"
+
+		//
+
+	}
+
+	@IBAction func solveNow(sender: AnyObject) {
+		solveIt(self)
+	}
+	@IBAction func solveIt(sender: AnyObject) {
+
+
+		//MARK:INIT TABLEVIEW
+		if actionItems.count > 0 {
+			return
+		}
+		
+
+		let a:Int! = Int(txt_Bucket1Size.text!)
+		let b:Int! = Int(txt_Bucket2Size.text!)
 
 		//MARK: INIT BUCKETS FROM INPUT
-		var bucket1 = (Bucket.init(text: "Small", capacity:5))
-		var bucket2 = (Bucket.init(text: "Large", capacity:43))
-		goal    = 41
+		var bucket1 = (Bucket.init(text: "Small", capacity:a))
+		var bucket2 = (Bucket.init(text: "Large", capacity:b))
+		goal    = 4
 
 		//MARK: CHECK IF SOLVABLE
 		solvable = verifySolvable(bucket1,bucket2:bucket2,goal:goal)
 		print("SOLVABLE ",solvable,"\n\nSOLUTION STEPS\n")
+
+
 
 		if((solvable) == true){
 
@@ -166,7 +216,14 @@ func resetBuckets (bucket1:Bucket, bucket2:Bucket){
 		print("ACTION   - STEP ",stepNum, "\tSTARTING BUCKET ",startingBucketSize, "\t[",status, "]")
 		logBucketStatus(bucket1)
 		logBucketStatus(bucket2)
-		print("\n")
+   		print("\n")
+
+		//MARK :ADD STATUS DATA TO TABLE
+        var scoreMessage 	= String(bucket1.currentAmount)+"\t|\t"+String(bucket2.currentAmount)
+		var stepMessage 	= "\t"+String(stepNum)
+		var statusMessage 	= " - "+status
+		var lineToAdd = scoreMessage+stepMessage+statusMessage
+		actionItems.append(ActionItem(text: lineToAdd))
 	}
 	func logBucketStatus(bucket:Bucket){
 		print(bucket.lastAction, "-",bucket.text,"      - Capacity ", bucket.capacity, "\tCurrent Amount ",bucket.currentAmount, "\tAvailable Capacity ", bucket.availableCapacity)
@@ -257,11 +314,33 @@ func resetBuckets (bucket1:Bucket, bucket2:Bucket){
 		//		logBucketStatus(bucketTo)
 	}
 
-	// MARK: MEMORY MANAGEMENT
+	// MARK: * MEMORY MANAGEMENT
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
+
+
+	// MARK: * TABLE VIEW DELEGATES
+
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
+
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return actionItems.count
+	}
+
+	func tableView(tableView: UITableView,
+		cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+			let cell = tableView.dequeueReusableCellWithIdentifier("scoreCell",
+				forIndexPath: indexPath) as! UITableViewCell
+			let item = actionItems[indexPath.row]
+			cell.textLabel?.text = item.text
+			return cell
+	}
+	
+
 	
 }
 
