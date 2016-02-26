@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 	private var completeSwitch : Bool? = nil
 	private var startingBucketSize : String! = "Large"
 	private var stepNum : Int = 0
+	private var solvable : Bool! = false
 
 
 	override func viewDidLoad() {
@@ -20,8 +21,11 @@ class ViewController: UIViewController {
 
 
 		//MARK: INIT BUCKETS FROM INPUT
-		var bucket1 = (Bucket.init(text: "Small", capacity:3))
-		var bucket2 = (Bucket.init(text: "Large", capacity:5))
+		var bucket1 = (Bucket.init(text: "Small", capacity:12))
+		var bucket2 = (Bucket.init(text: "Large", capacity:4))
+
+		//MARK: CHECK IF SOLVABLE
+		solvable = verifySolvable(bucket1,bucket2:bucket2,goal:1)
 
 		//MARK: SET THE STARTING BUCKET
 		startingBucketSize = "Large"
@@ -33,19 +37,40 @@ class ViewController: UIViewController {
 		logStatus (bucket1, bucket2:bucket2, status:"FILL")
 
 		// MARK: FIND THE PATH FROM THE STARTING BUCKET
-		self.findTheNextPathPoint(bucket1, bucket2: bucket2)
+		self.findTheNextPathPoint(bucket1, bucket2: bucket2,goal:1)
 
 	}
 
+	func verifySolvable(bucket1:Bucket,bucket2:Bucket, goal:Int)->Bool {
+		//MARK: SOLUTIONS HAVE A GCD
+      var hasGCD = gcd(bucket1.capacity, bucket2Size: bucket2.capacity)
+		print("GCD =",hasGCD)
+		if(hasGCD == 1) {return (true)}
+
+		if (bucket1.capacity == goal || bucket2.capacity == goal){
+			return(true)
+		}
+return(false)
+
+	}
+	// GCD of two numbers:
+	func gcd(var bucket1Size : Int, var bucket2Size : Int) -> Int {
+		while bucket2Size != 0 {
+			(bucket1Size, bucket2Size) = (bucket2Size, bucket1Size % bucket2Size)
+		}
+		return abs(bucket1Size)
+	}
+
+
 	//MARK: FIND NEXT PATH POINT
-	func findTheNextPathPoint(var bucket1: Bucket, var bucket2: Bucket) -> Bool {
+	func findTheNextPathPoint(var bucket1: Bucket, var bucket2: Bucket, goal:Int) -> Bool {
 		///		completeSwitch = false
 
 
 		//TODO: if solvable do until solved flag is set
 		var solved = false
 		while solved == false {
-		if(bucket1.currentAmount == 4 || bucket2.currentAmount == 4){
+		if(bucket1.currentAmount == goal || bucket2.currentAmount == goal){
 			print("COMPLETE 4 UNITS in B...")
 			completeSwitch = true
 			return (completeSwitch)!
@@ -55,21 +80,21 @@ class ViewController: UIViewController {
 
 		if(solved == false){
 		//TOP
-		if(bucket1.currentAmount == 0 ){
+		if(bucket1.currentAmount == 0 && (solved == false)){
 			// (LARGE FIRST) TRANSFER (LARGE > SMALL)
 			transferBucketL2S(bucket2, bucketTo: bucket1)
 			solved = getScore(bucket1,bucket2: bucket2)
 			logStatus (bucket1, bucket2:bucket2, status:" TOP ")}
 
 		//RIGHT
-		if(bucket2.currentAmount == bucket2.capacity ){
+		if(bucket2.currentAmount == bucket2.capacity  && (solved == false)){
 			// (LARGE FIRST) TRANSFER (SMALL > LARGE)
 			transferBucketL2S(bucket2, bucketTo: bucket1)
 			solved = getScore(bucket1,bucket2: bucket2)
 			logStatus (bucket1, bucket2:bucket2, status:" RIGHT ")}
 
 		//LEFT
-		if(bucket1.currentAmount > 0 && bucket1.currentAmount < bucket1.capacity){
+		if(bucket1.currentAmount > 0 && bucket1.currentAmount < bucket1.capacity && (solved == false)){
 			// (LARGE FIRST) ALWAYS FILL
 			bucket2 = self.fillBucket(bucket2)
 			solved = getScore(bucket1,bucket2: bucket2)
@@ -77,7 +102,7 @@ class ViewController: UIViewController {
 
 		//BOTTOM
 
-			if(( bucket1.currentAmount == bucket1.capacity)){
+			if(( bucket1.currentAmount == bucket1.capacity && (solved == false))){
 				bucket1 = self.emptyBucket(bucket1)
 			solved = getScore(bucket1,bucket2: bucket2)
 			logStatus (bucket1, bucket2:bucket2, status:"BOTTOM")}
