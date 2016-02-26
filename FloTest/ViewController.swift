@@ -22,8 +22,8 @@ class ViewController: UIViewController {
 
 
 		//MARK: INIT BUCKETS FROM INPUT
-		var bucket1 = (Bucket.init(text: "Small", capacity:3))
-		var bucket2 = (Bucket.init(text: "Large", capacity:5))
+		var bucket1 = (Bucket.init(text: "Small", capacity:5))
+		var bucket2 = (Bucket.init(text: "Large", capacity:43))
 		goal    = 41
 
 		//MARK: CHECK IF SOLVABLE
@@ -39,14 +39,17 @@ class ViewController: UIViewController {
 
 			print("PATH 1")
 			
-//			// MARK: BEGIN BY FILLING A BUCKET 1
-//			bucket2 = self.fillBucket(bucket1)
-//			logStatus (bucket1, bucket2:bucket2, status:"FILL")
-//
-//			// MARK: FIND THE PATH TO SOLUITON 1
-//			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
+			// MARK: BEGIN BY FILLING A BUCKET 1
+			bucket1 = self.fillBucket(bucket1)
+			logStatus (bucket2, bucket2:bucket1, status:"FILL")
+
+			// MARK: FIND THE PATH TO SOLUITON 1
+			self.findTheNextPathPoint(bucket2, bucket2: bucket1, goal:goal)
+			print("SOLUTION 1 FOUND IN ", stepNum, " STEPS\n")
 
 			print("PATH 2")
+
+			resetBuckets(bucket1, bucket2:bucket2)
 
 			// MARK: BEGIN BY FILLING A BUCKET 2
 			bucket2 = self.fillBucket(bucket2)
@@ -54,9 +57,19 @@ class ViewController: UIViewController {
 
 			// MARK: FIND THE PATH TO SOLUITON 2
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
+			print("SOLUTION 2 FOUND IN ", stepNum, " STEPS\n")
 		}
 
 	}
+
+func resetBuckets (bucket1:Bucket, bucket2:Bucket){
+	stepNum = 0
+	bucket1.availableCapacity = bucket1.capacity
+	bucket2.availableCapacity = bucket2.capacity
+	bucket1.currentAmount = 0
+	bucket2.currentAmount = 0
+}
+
 
 	func verifySolvable(bucket1:Bucket,bucket2:Bucket, goal:Int)->Bool {
 		//MARK: CHECK FOR SOLUITONS
@@ -69,7 +82,7 @@ class ViewController: UIViewController {
 
 
 		// MARK: TESTS
-		print("TESTS")
+		print("\nTESTS")
 		if (goal > bucket1.capacity && goal > bucket2.capacity){
 			print("* FAIL * Goal must be smaller than the largest bucket")
 			return(false)
