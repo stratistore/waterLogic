@@ -16,11 +16,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	private var stepNum : Int = 0
 	private var solvable : Bool! = false
 	private var goal : Int = 0
+	private var bucket1 : Bucket = (Bucket.init(text: "Large", capacity:0))
+	private var bucket2 : Bucket = (Bucket.init(text: "Small", capacity:0))
+
 
 
 	// MARK: - Setup
 	// MARK: o Display Solution
-	@IBOutlet weak var tbl_SolutionTable: UITableView!
+	@IBOutlet  var tbl_SolutionTable: UITableView!
 	var actionItems = [ActionItem]()
 
 	// MARK: o New Game
@@ -40,40 +43,62 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		tbl_SolutionTable.dataSource = self
-		tbl_SolutionTable.delegate = self
-		tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+		if(tbl_SolutionTable.dataSource == nil){
+			tbl_SolutionTable.dataSource = self
+			tbl_SolutionTable.delegate = self
+			tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+		}
 
 
 
+		
+		
+
+tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
 		//MARK:CONVERT INPUTS TO VALUES
-		txt_Bucket1Size.text = "5"
-		txt_Bucket2Size.text = "3"
+		txt_Bucket1Size.text	= "5"
+		txt_Bucket2Size.text 	= "3"
+		txt_TargetAmount.text 	= "4"
 
-		//
+		 	solveIt()
+	}
+
+	@IBAction func bucket1SizeChanged() {
+		print("BUCKET 1 CHANGED SIZE")
 
 	}
 
-	@IBAction func solveNow(sender: AnyObject) {
-		solveIt(self)
+	@IBAction func CalculateSolution() {
+
+		resetBuckets(bucket1, bucket2:bucket2)
+		solveIt()
 	}
-	@IBAction func solveIt(sender: AnyObject) {
+	func solveIt(){
+		print("SOLVEIT")
+				completeSwitch = false;
+
+
 
 
 		//MARK:INIT TABLEVIEW
 		if actionItems.count > 0 {
+			print("REMOVE")
+			actionItems.removeAll()
+			tbl_SolutionTable.reloadData()
 			return
 		}
-		
 
 		let a:Int! = Int(txt_Bucket1Size.text!)
 		let b:Int! = Int(txt_Bucket2Size.text!)
+		let c:Int! = Int(txt_TargetAmount.text!)
 
 		//MARK: INIT BUCKETS FROM INPUT
-		var bucket1 = (Bucket.init(text: "Small", capacity:a))
-		var bucket2 = (Bucket.init(text: "Large", capacity:b))
-		goal    = 4
 
+		bucket1.capacity = a
+  		bucket2.capacity = b
+		goal 			 = c
+
+print("2")
 		//MARK: CHECK IF SOLVABLE
 		solvable = verifySolvable(bucket1,bucket2:bucket2,goal:goal)
 		print("SOLVABLE ",solvable,"\n\nSOLUTION STEPS\n")
@@ -88,7 +113,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
 			print("PATH 1")
-			
+
 			// MARK: BEGIN BY FILLING A BUCKET 1
 			bucket1 = self.fillBucket(bucket1)
 			logStatus (bucket2, bucket2:bucket1, status:"FILL")
@@ -112,13 +137,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 	}
 
-func resetBuckets (bucket1:Bucket, bucket2:Bucket){
-	stepNum = 0
-	bucket1.availableCapacity = bucket1.capacity
-	bucket2.availableCapacity = bucket2.capacity
-	bucket1.currentAmount = 0
-	bucket2.currentAmount = 0
-}
+	func resetBuckets (bucket1:Bucket, bucket2:Bucket){
+		stepNum = 0
+		bucket1.availableCapacity = bucket1.capacity
+		bucket2.availableCapacity = bucket2.capacity
+		bucket1.currentAmount = 0
+		bucket2.currentAmount = 0
+	}
 
 
 	func verifySolvable(bucket1:Bucket,bucket2:Bucket, goal:Int)->Bool {
@@ -137,6 +162,12 @@ func resetBuckets (bucket1:Bucket, bucket2:Bucket){
 			print("* FAIL * Goal must be smaller than the largest bucket")
 			return(false)
 		}
+
+		if ((bucket1.capacity == bucket2.capacity) && (goal != bucket2.capacity)){
+			print("* FAIL * Buckets must be different sizes")
+			return(false)
+		}
+
 		if (hasGCD == 1 || bucket1.capacity == goal || bucket2.capacity == goal || bucket1.capacity - bucket2.capacity == abs(goal)){
 			return(true)
 		}
@@ -216,14 +247,15 @@ func resetBuckets (bucket1:Bucket, bucket2:Bucket){
 		print("ACTION   - STEP ",stepNum, "\tSTARTING BUCKET ",startingBucketSize, "\t[",status, "]")
 		logBucketStatus(bucket1)
 		logBucketStatus(bucket2)
-   		print("\n")
+		print("\n")
 
 		//MARK :ADD STATUS DATA TO TABLE
-        var scoreMessage 	= String(bucket1.currentAmount)+"\t|\t"+String(bucket2.currentAmount)
+		var scoreMessage 	= String(bucket1.currentAmount)+"\t|\t"+String(bucket2.currentAmount)
 		var stepMessage 	= "\t"+String(stepNum)
 		var statusMessage 	= " - "+status
 		var lineToAdd = scoreMessage+stepMessage+statusMessage
 		actionItems.append(ActionItem(text: lineToAdd))
+		tbl_SolutionTable.reloadData()
 	}
 	func logBucketStatus(bucket:Bucket){
 		print(bucket.lastAction, "-",bucket.text,"      - Capacity ", bucket.capacity, "\tCurrent Amount ",bucket.currentAmount, "\tAvailable Capacity ", bucket.availableCapacity)
@@ -337,10 +369,11 @@ func resetBuckets (bucket1:Bucket, bucket2:Bucket){
 				forIndexPath: indexPath) as! UITableViewCell
 			let item = actionItems[indexPath.row]
 			cell.textLabel?.text = item.text
+			cell.detailTextLabel?.text = "..."
 			return cell
 	}
 	
-
+	
 	
 }
 
