@@ -346,6 +346,15 @@ print("2")
 		//		logBucketStatus(bucketTo)
 	}
 
+	//MARK: * ROTATION
+	override func shouldAutorotate() -> Bool {
+		return true
+	}
+
+	override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+		return [UIInterfaceOrientationMask.LandscapeLeft,UIInterfaceOrientationMask.LandscapeRight,UIInterfaceOrientationMask.Portrait,UIInterfaceOrientationMask.PortraitUpsideDown]
+	}
+
 	// MARK: * MEMORY MANAGEMENT
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
