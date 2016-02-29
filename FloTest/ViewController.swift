@@ -58,7 +58,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		txt_Bucket2Size.text 	= "3"
 		txt_TargetAmount.text 	= "4"
 
-		solveIt()
+		//solveIt()
 	}
 
 
@@ -74,12 +74,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		if (txt_Instructions.hidden == true){
 		    txt_Instructions.hidden = false
 			tbl_SolutionTable.hidden = true
+			tbl_SolutionTable.alpha = 0 //fix for issue
 			txt_Solution2.hidden = false
 			txt_Solution1.hidden = false
 			btn_StartCalc.setTitle("CALCULATE SOLUTION", forState: UIControlState.Normal)
 		}else{
             txt_Instructions.hidden = true
 			tbl_SolutionTable.hidden = true
+			tbl_SolutionTable.alpha = 0 //fix
 			txt_Solution2.hidden = true
 			txt_Solution1.hidden = true
 			btn_StartCalc.setTitle("VIEW INSTRUCTIONS", forState: UIControlState.Normal)
