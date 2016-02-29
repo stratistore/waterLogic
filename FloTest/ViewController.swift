@@ -11,12 +11,19 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+	/** TEST */
 	private var completeSwitch : Bool? = nil
+	/** TEST */
 	private var startingBucketSize : String! = "Large"
+	/** TEST */
 	private var stepNum : Int = 0
+	/** TEST */
 	private var solvable : Bool! = false
+	/** TEST */
 	private var goal : Int = 0
+	/** TEST */
 	private var bucket1 : Bucket = (Bucket.init(text: "Large", capacity:0))
+	/** TEST */
 	private var bucket2 : Bucket = (Bucket.init(text: "Small", capacity:0))
 
 
@@ -26,8 +33,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	@IBOutlet  var tbl_SolutionTable: UITableView!
 	var actionItems = [ActionItem]()
 
-	// MARK: o New Game
-	@IBOutlet weak var btn_StartGame: UIButton!
 
 	// MARK: o Get Input
 	// MARK: > Bucket 1 Size
@@ -40,6 +45,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	// MARK: > Manual or Automatic
 
 
+	// MARK: o New Game
+	@IBOutlet weak var btn_StartCalc: UIButton!
+
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
@@ -47,12 +56,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			tbl_SolutionTable.dataSource = self
 			tbl_SolutionTable.delegate = self
 			tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
 		}
 
+print(self.btn_StartCalc.titleLabel!.text)
 
-
-		
-		
+		self.btn_StartCalc!.titleLabel!.text = "READY"
+		btn_StartCalc.setTitle("READY", forState: UIControlState.Normal)
+		print(self.btn_StartCalc.titleLabel!.text)
 
 tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
 		//MARK:CONVERT INPUTS TO VALUES
@@ -63,16 +74,37 @@ tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, 
 		 	solveIt()
 	}
 
+	/**
+	Repeats a string `times` times.
+
+	- Parameter str:   The string to repeat.
+	- Parameter times: The number of times to repeat `str`.
+
+	- Throws: `MyError.InvalidTimes` if the `times` parameter
+	is less than zero.
+
+	- Returns: A new string with `str` repeated `times` times.
+	*/
 	@IBAction func bucket1SizeChanged() {
 		print("BUCKET 1 CHANGED SIZE")
 
 	}
 
+	/**
+	Just a clarification for those new to Swift and IOS programming. The line button.setTitle("myTitle", forState: UIControlState.Normal) only applies to IBOutlets, not IBActions.
+
+	So, if your app is using a button as a function to execute some code, say playing music, and you want to change the title from Play to Pause based on a toggle variable, you need to also create an IBOutlet for that button.
+
+	http://stackoverflow.com/questions/26326296/changing-text-of-uibutton-programatically-swift
+	*/
 	@IBAction func CalculateSolution() {
 
 		resetBuckets(bucket1, bucket2:bucket2)
+btn_StartCalc.setTitle("DONE", forState: UIControlState.Normal)
 		solveIt()
 	}
+
+
 	func solveIt(){
 		print("SOLVEIT")
 				completeSwitch = false;
@@ -174,7 +206,14 @@ print("2")
 		return(false)
 
 	}
-	// GCD of two numbers:
+
+	//MARK: - FIND GCD
+	/**
+	Calculates the GCD (Greatest Common Denominator) for two numbers.
+	- Parameter bucket1Size: Integer representing the Size/Capacity of the first Bucket.
+	- Parameter bucket2Size: Integer representing the Size/Capacity of the second Bucket.
+	- Returns:  Integer - GCD of two numbers:
+	*/
 	func gcd(var bucket1Size : Int, var bucket2Size : Int) -> Int {
 		while bucket2Size != 0 {
 			(bucket1Size, bucket2Size) = (bucket2Size, bucket1Size % bucket2Size)
@@ -183,7 +222,15 @@ print("2")
 	}
 
 
-	//MARK: FIND NEXT PATH POINT
+	//MARK: FIND NEXT PATH POINT 
+	/**
+	Calculates the Next Path Point in the solution.
+	- Parameter bucket1: Bucket1 Object.
+	- Parameter bucket2: Bucket2 Object.
+	- Parameter goal: Goal Amount Int.
+
+	- Returns:  Bool:
+	*/
 	func findTheNextPathPoint(var bucket1: Bucket, var bucket2: Bucket, goal:Int) -> Bool {
 		///		completeSwitch = false
 

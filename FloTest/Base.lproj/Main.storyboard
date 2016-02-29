@@ -246,6 +246,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="btn_StartCalc" destination="X0F-Wo-hDI" id="8Jg-LO-T4p"/>
                         <outlet property="tbl_SolutionTable" destination="Pev-jy-F5X" id="K41-a9-cIt"/>
                         <outlet property="txt_Bucket1Size" destination="PXc-gM-ROC" id="JIi-GB-aSt"/>
                         <outlet property="txt_Bucket2Size" destination="w1A-GJ-c28" id="8bL-ri-jtV"/>
@@ -254,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="163.5" y="262.5"/>
+            <point key="canvasLocation" x="-177" y="-8.25"/>
         </scene>
     </scenes>
     <resources>
