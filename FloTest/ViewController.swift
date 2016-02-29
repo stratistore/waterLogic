@@ -43,6 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 		}
 		tbl_SolutionTable.hidden = true
+		tbl_SolutionTable.alpha = 0
 		txt_Instructions.hidden = false
 
 		print(self.btn_StartCalc.titleLabel!.text)
@@ -57,7 +58,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		txt_Bucket2Size.text 	= "3"
 		txt_TargetAmount.text 	= "4"
 
-		 solveIt()
+		solveIt()
 	}
 
 
@@ -174,6 +175,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			txt_Solution2.hidden = true
 			tbl_SolutionTable.reloadData()
 			tbl_SolutionTable.hidden = false
+			tbl_SolutionTable.alpha=1
 
 		}
 
