@@ -56,6 +56,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			tbl_SolutionTable.dataSource = self
 			tbl_SolutionTable.delegate = self
 			tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+			self.tbl_SolutionTable.rowHeight = 440.0
 
 		}
 
@@ -421,11 +422,13 @@ print("2")
 
 	func tableView(tableView: UITableView,
 		cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-			let cell = tableView.dequeueReusableCellWithIdentifier("scoreCell",
-				forIndexPath: indexPath) as! UITableViewCell
+			let cell =  tableView.dequeueReusableCellWithIdentifier("stepCell",
+			forIndexPath: indexPath) as! SolutionStep //UITableViewCell
 			let item = actionItems[indexPath.row]
-			cell.textLabel?.text = item.text
-			cell.detailTextLabel?.text = "..."
+			cell.title?.text = item.text
+			cell.subTitle?.text = "..."
+			cell.detail?.text = "You've got to diffuse a bomb by placing exactly 4 gallons of water on a sensor. The problem is, you only have a 5 gallon (18.9 L) jug and a 3 gallon jug on hand! This classic riddle, made famous in Die Hard 3, may seem impossible without a measuring cup, but it is actually remarkably simple. Click here to watch the clip from the movie if you need to refresh your memory. For the solution, click here to skip to the answer. If you want guidance and hints to solving it on your own, scroll down."
+			//cell.stepImage?.image =  "Start"
 			return cell
 	}
 	
