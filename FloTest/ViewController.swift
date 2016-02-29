@@ -57,7 +57,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		txt_Bucket2Size.text 	= "3"
 		txt_TargetAmount.text 	= "4"
 
-		//solveIt()
+		 solveIt()
 	}
 
 
