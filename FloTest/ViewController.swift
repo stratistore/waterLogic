@@ -130,9 +130,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 		if((solvable) == true){
 
-			//MARK: INIT BUCKETS
-			//startingBucketSize = "Large"
-			//logStatus (bucket1, bucket2:bucket2, status: "INIT")
+			//MARK: FIND THE PATH TO SOLUTION 1
 			print("PATH 1")
 
 			bucket1.capacity = a
@@ -141,10 +139,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			resetBuckets(bucket1, bucket2:bucket2)
 
 
-			// MARK: BEGIN BY FILLING A BUCKET 1
 			// MARK: BEGIN BY FILLING A BUCKET
-			//			bucket1.filledFirstFlag = false
-			//			bucket2.filledFirstFlag = true
 			bucket2 = self.fillBucket(bucket2)
 			logStatus (bucket1, bucket2:bucket2, status:"Fill")
 
@@ -210,6 +205,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 		// MARK: TESTS
 		print("\nTESTS")
+		txt_Solution1.text = ""
 		txt_Solution2.text = ""
 		if (goal > bucket1.capacity && goal > bucket2.capacity){
 			print("* FAIL * Goal must be smaller than the largest bucket")
@@ -254,7 +250,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 	- Returns:  Bool:
 	*/
-	func findTheNextPathPoint(var startingBucket: Bucket, var bucket2: Bucket, goal:Int) -> Bool {
+	func findTheNextPathPoint( startingBucket: Bucket, var bucket2: Bucket, goal:Int) -> Bool {
 		///		completeSwitch = false
 
 
@@ -359,34 +355,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		let lastAction = "EMPTIED"
 		bucket.lastAction = lastAction
 		return bucket	}
-
-	// MARK: o Transfer From Bucket1 To Bucket2
-	//	func transferBucket(bucketFrom : Bucket, bucketTo : Bucket ){
-	//		print("BUCKET XFER (FROM) - Capacity ", bucketFrom.capacity, "\tCurrent Amount ",bucketFrom.currentAmount, "\tAvailable Capacity ", bucketFrom.availableCapacity)
-	//		print("BUCKET XFER ( TO ) - Capacity ", bucketTo.capacity, "\tCurrent Amount ",bucketTo.currentAmount, "\tAvailable Capacity ", bucketTo.availableCapacity)
-	//		if(bucketFrom.currentAmount < bucketTo.availableCapacity) {
-	//
-	//			let amountToTransfer    		= bucketFrom.currentAmount
-	//			bucketFrom.currentAmount 		= bucketFrom.currentAmount     - amountToTransfer
-	//			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
-	//			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
-	//			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
-	//
-	//
-	//		}
-	//		else {
-	//			let amountToTransfer    		= bucketFrom.currentAmount     - (bucketFrom.currentAmount - bucketTo.availableCapacity)
-	//			bucketFrom.currentAmount 		= bucketFrom.currentAmount     - amountToTransfer
-	//			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
-	//			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
-	//			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
-	//
-	//
-	//		}
-	//		print("\nBUCKET XFER (FROM) - Capacity ", bucketFrom.capacity, "\tCurrent Amount ",bucketFrom.currentAmount, "\tAvailable Capacity ", bucketFrom.availableCapacity)
-	//		print("BUCKET XFER ( TO ) - Capacity ", bucketTo.capacity, "\tCurrent Amount ",bucketTo.currentAmount, "\tAvailable Capacity ", bucketTo.availableCapacity)
-	//
-	//	}
 
 	// MARK: o Transfer
 	func transferBucketL2S(bucketFrom : Bucket, bucketTo : Bucket ){
