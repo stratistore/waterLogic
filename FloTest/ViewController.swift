@@ -52,8 +52,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 		print(self.btn_StartCalc.titleLabel!.text)
 
-		self.btn_StartCalc!.titleLabel!.text = "READY"
-		btn_StartCalc.setTitle("READY", forState: UIControlState.Normal)
+		self.btn_StartCalc!.titleLabel!.text = "PRESS WHEN READY"
+		btn_StartCalc.setTitle("PRESS WHEN READY", forState: UIControlState.Normal)
 		print(self.btn_StartCalc.titleLabel!.text)
 
 		tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
@@ -152,7 +152,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
 			print("SOLUTION 1 FOUND IN ", stepNum, " STEPS\n")
 
-			txt_Solution1.text  = "SOLUTION 1 FOUND IN "+String(stepNum)+" STEPS"
+			txt_Solution1.text  = "SOLUTION 1 = "+String(stepNum)+" STEPS"
 
 			actionItems.append(ActionItem(text: txt_Solution1.text!, imageToUse: "Finish", score:"."))
 			tbl_SolutionTable.reloadData()
@@ -174,7 +174,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			// MARK: FIND THE PATH TO SOLUITON 2
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
 			print("SOLUTION 2 FOUND IN ", stepNum, " STEPS\n")
-			txt_Solution2.text  = "SOLUTION 2 FOUND IN "+String(stepNum)+" STEPS"
+			txt_Solution2.text  = "SOLUTION 2 = "+String(stepNum)+" STEPS"
 			actionItems.append(ActionItem(text: txt_Solution2.text!, imageToUse: "Finish", score:"."))
 
 			txt_Solution1.hidden = true
