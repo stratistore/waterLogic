@@ -29,6 +29,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	@IBOutlet weak var txt_Bucket2Size: UITextField!
 	@IBOutlet weak var txt_TargetAmount: UITextField!
 	@IBOutlet weak var btn_StartCalc: UIButton!
+	@IBOutlet weak var txt_Solution1: UILabel!
+	@IBOutlet weak var txt_Solution2: UILabel!
+	@IBOutlet weak var txt_Instructions: UITextView!
 
 
 	override func viewDidLoad() {
@@ -39,6 +42,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			tbl_SolutionTable.delegate = self
 			tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 		}
+		tbl_SolutionTable.hidden = true
+		txt_Instructions.hidden = false
 
 		print(self.btn_StartCalc.titleLabel!.text)
 
@@ -52,7 +57,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		txt_Bucket2Size.text 	= "3"
 		txt_TargetAmount.text 	= "4"
 
-		solveIt()
+		//solveIt()
 	}
 
 
@@ -64,7 +69,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	@IBAction func CalculateSolution() {
 
 		resetBuckets(bucket1, bucket2:bucket2)
-		btn_StartCalc.setTitle("DONE", forState: UIControlState.Normal)
+
+		if (txt_Instructions.hidden == true){
+		    txt_Instructions.hidden = false
+			tbl_SolutionTable.hidden = true
+			txt_Solution2.hidden = false
+			txt_Solution1.hidden = false
+			btn_StartCalc.setTitle("CALCULATE SOLUTION", forState: UIControlState.Normal)
+		}else{
+            txt_Instructions.hidden = true
+			tbl_SolutionTable.hidden = true
+			txt_Solution2.hidden = true
+			txt_Solution1.hidden = true
+			btn_StartCalc.setTitle("VIEW INSTRUCTIONS", forState: UIControlState.Normal)
+		}
 		solveIt()
 	}
 
@@ -72,6 +90,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	func solveIt(){
 		print("SOLVEIT")
 		completeSwitch = false;
+
 
 
 
@@ -101,6 +120,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
 
+
 		if((solvable) == true){
 
 			//MARK: INIT BUCKETS
@@ -119,11 +139,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			//			bucket1.filledFirstFlag = false
 			//			bucket2.filledFirstFlag = true
 			bucket2 = self.fillBucket(bucket2)
-			logStatus (bucket1, bucket2:bucket2, status:" FILL")
+			logStatus (bucket1, bucket2:bucket2, status:"Fill")
 
 			// MARK: FIND THE PATH TO SOLUITON 2
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
-			print("SOLUTION 2 FOUND IN ", stepNum, " STEPS\n")
+			print("SOLUTION 1 FOUND IN ", stepNum, " STEPS\n")
+
+			txt_Solution1.text  = "SOLUTION 1 FOUND IN "+String(stepNum)+" STEPS"
+
+			actionItems.append(ActionItem(text: txt_Solution1.text!, imageToUse: "Finish", score:"."))
+			tbl_SolutionTable.reloadData()
 
 
 			print("PATH 2")
@@ -137,11 +162,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			//			bucket1.filledFirstFlag = false
 			//			bucket2.filledFirstFlag = true
 			bucket2 = self.fillBucket(bucket2)
-			logStatus (bucket1, bucket2:bucket2, status:" FILL")
+			logStatus (bucket1, bucket2:bucket2, status:"Fill")
 
 			// MARK: FIND THE PATH TO SOLUITON 2
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
 			print("SOLUTION 2 FOUND IN ", stepNum, " STEPS\n")
+			txt_Solution2.text  = "SOLUTION 2 FOUND IN "+String(stepNum)+" STEPS"
+			actionItems.append(ActionItem(text: txt_Solution2.text!, imageToUse: "Finish", score:"."))
+
+			txt_Solution1.hidden = true
+			txt_Solution2.hidden = true
+			tbl_SolutionTable.reloadData()
+			tbl_SolutionTable.hidden = false
+
 		}
 
 	}
@@ -169,13 +202,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 		// MARK: TESTS
 		print("\nTESTS")
+		txt_Solution2.text = ""
 		if (goal > bucket1.capacity && goal > bucket2.capacity){
 			print("* FAIL * Goal must be smaller than the largest bucket")
+			txt_Solution2.text = "* FAIL * Goal must be smaller than the largest bucket"
 			return(false)
 		}
 
 		if ((bucket1.capacity == bucket2.capacity) && (goal != bucket2.capacity)){
 			print("* FAIL * Buckets must be different sizes")
+			txt_Solution2.text = "* FAIL * Buckets must be different sizes"
 			return(false)
 		}
 
@@ -234,28 +270,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 					//bucket1 = self.fillBucket(bucket1)
 
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" TRANSFER")}
+					logStatus (bucket1, bucket2:bucket2, status:"Transfer")}
 
 				//RIGHT
 				if(bucket2.currentAmount == bucket2.capacity  && (solved == false)){
 					// (LARGE FIRST) TRANSFER (SMALL > LARGE)
 					transferBucketL2S(bucket2, bucketTo: bucket1)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" TRANSFER")}
+					logStatus (bucket1, bucket2:bucket2, status:"Transfer")}
 
 				//LEFT
 				if(bucket1.currentAmount > 0 && bucket1.currentAmount < bucket1.capacity && (solved == false)){
 					// (LARGE FIRST) ALWAYS FILL
 					bucket2 = self.fillBucket(bucket2)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" FILL ")}
+					logStatus (bucket1, bucket2:bucket2, status:"Fill")}
 
 				//BOTTOM
 
 				if(( bucket1.currentAmount == bucket1.capacity && (solved == false))){
 					bucket1 = self.emptyBucket(bucket1)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" EMPTY")}
+					logStatus (bucket1, bucket2:bucket2, status:"Empty")}
 
 
 			}
@@ -279,11 +315,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		print("\n")
 
 		//MARK :ADD STATUS DATA TO TABLE
-		let scoreMessage 	= String(bucket1.currentAmount)+"\t|\t"+String(bucket2.currentAmount)
+		let scoreMessage 	= String(bucket1.currentAmount)+"|"+String(bucket2.currentAmount)
 		let stepMessage 	= "\t"+String(stepNum)
 		let statusMessage 	= " - "+status
-		let lineToAdd = scoreMessage+stepMessage+statusMessage
-		actionItems.append(ActionItem(text: lineToAdd))
+		let lineToAdd = stepMessage+statusMessage
+		actionItems.append(ActionItem(text: lineToAdd, imageToUse: status, score:scoreMessage))
 		tbl_SolutionTable.reloadData()
 	}
 	func logBucketStatus(bucket:Bucket){
@@ -401,8 +437,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			let cell = tableView.dequeueReusableCellWithIdentifier("scoreCell",
 				forIndexPath: indexPath)
 			let item = actionItems[indexPath.row]
+			cell.imageView?.image = UIImage(imageLiteral: item.imageToUse)
 			cell.textLabel?.text = item.text
-			cell.detailTextLabel?.text = "You've got to diffuse a bomb by placing exactly 4 gallons of water on a sensor. The problem is, you only have a 5 gallon (18.9 L) jug and a 3 gallon jug on hand! This classic riddle, made famous in Die Hard 3, may seem impossible without a measuring cup, but it is actually remarkably simple. Click here to watch the clip from the movie if you need to refresh your memory. For the solution, click here to skip to the answer. If you want guidance and hints to solving it on your own, scroll down."
+			cell.detailTextLabel?.text = item.score //"0|1"
 			return cell
 	}
 	
