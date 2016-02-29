@@ -222,6 +222,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		if (hasGCD == 1 || bucket1.capacity == goal || bucket2.capacity == goal || bucket1.capacity - bucket2.capacity == abs(goal)){
 			return(true)
 		}
+		txt_Solution2.text = "* FAIL - NO SOLUTION * "
 		return(false)
 
 	}
@@ -420,7 +421,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	}
 
 	// MARK: * TEXT FIELD DELEGATE
-	func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
+	func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
 	{
 		textField.resignFirstResponder()
 		return true;

@@ -56,7 +56,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="gtS-Ij-Nfu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Sjy-bW-S0W"/>
@@ -101,7 +101,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKj-V6-zrV">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">How to Solve the Water Jug Riddle from Die Hard 3.   You've got to diffuse a bomb by placing exactly 4 gallons of water on a sensor. The problem is, you only have a 5 gallon (18.9 L) jug and a 3 gallon jug on hand! This classic riddle, made famous in Die Hard 3, may seem impossible without a measuring cup, but it is actually remarkably simple.
+                                <string key="text">How to Solve the Water Jug Riddle from Die Hard 3.   You've got to diffuse a bomb by placing exactly 4 gallons of water on a sensor. The problem is, you only have a 5 gallon (18.9 L) jug and a 3 gallon jug on hand! This classic riddle, made famous in Die Hard 3, may seem impossible without a measuring cup, but it is actually remarkably simple.
 
 For the solution, click here to skip to the answer. If you want guidance and hints to solving it on your own, scroll down.                                                     
 1   Simplify the question and your options. Setting the movie aside for the moment, think of the riddle in it's most basic terms. What do you know, what's your goal, and what are your options? A simpler way to look at the riddle might be: 
@@ -109,7 +109,7 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
 2  Determine where you will keep the 4 gallons of water. In order to measure out your 4 gallons, you need to put it somewhere. As John McClane rightly deduces, you couldn't possible fit it in the 3 gallon jug, which means the right answer must involve getting the right amount of water in the 5 gallon jug.    
 3   Know that, like all good riddles, you have everything you need for a solution.The solution does not involve bringing in another jug, or eyeballing the water levels perfectly, or finding fractions of jugs. You have two jugs and an unlimited supply of water. How can you use just those things to get to 4 gallons? More specifically, how can you use 3 and 5 to get to 4?
 	◦	Unlimited water means you can use or pour out as much as you want.
-	◦	You are not able to guess exactly how much water is in the jug unless you fill it all the way up.</mutableString>
+	◦	You are not able to guess exactly how much water is in the jug unless you fill it all the way up.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -133,9 +133,6 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="98" y="68" width="50" height="26"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JUG 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCt-Xa-4aV">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -202,7 +199,7 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scoreCell" textLabel="aS4-cG-9vO" detailTextLabel="leE-4N-1c5" imageView="6Vn-sX-hMK" style="IBUITableViewCellStyleValue1" id="B9R-De-X7c">
-                                        <rect key="frame" x="0.0" y="49" width="560" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B9R-De-X7c" id="eZT-68-YQ8">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
@@ -340,36 +337,19 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                 <exclude reference="fx1-L9-FIz"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="W1t-Bt-Zcf"/>
-                                <exclude reference="u8J-MV-VbM"/>
+                                <exclude reference="aE7-5h-Vy5"/>
+                                <exclude reference="b2i-Af-nxo"/>
                                 <exclude reference="FKK-CZ-KFz"/>
                                 <exclude reference="JQg-HD-LUL"/>
                                 <exclude reference="KU7-Ae-TiX"/>
                                 <exclude reference="t00-hq-Rfw"/>
+                                <exclude reference="W1t-Bt-Zcf"/>
+                                <exclude reference="u8J-MV-VbM"/>
                                 <exclude reference="FeX-kE-bq2"/>
                                 <exclude reference="UyQ-wy-Y20"/>
                                 <exclude reference="i2m-Yp-Wac"/>
                                 <exclude reference="wST-XB-k9b"/>
-                                <exclude reference="RUy-4B-l8L"/>
-                                <exclude reference="uDm-VA-qII"/>
                                 <exclude reference="KQs-3d-vtU"/>
-                                <exclude reference="5Q8-Ti-i0p"/>
-                                <exclude reference="DLf-rk-Zut"/>
-                                <exclude reference="Hbt-FV-26f"/>
-                                <exclude reference="dnQ-28-21s"/>
-                                <exclude reference="zWY-Jc-Xqg"/>
-                                <exclude reference="Gsf-FF-JM4"/>
-                                <exclude reference="dtB-q5-cZz"/>
-                                <exclude reference="qQr-Ex-qe9"/>
-                                <exclude reference="qWh-2u-x9g"/>
-                                <exclude reference="ABr-2R-mqM"/>
-                                <exclude reference="odF-iC-O8V"/>
-                                <exclude reference="5hB-yz-bGk"/>
-                                <exclude reference="Mw2-0N-gu7"/>
-                                <exclude reference="Ycg-d2-r5H"/>
-                                <exclude reference="quy-rL-oS5"/>
-                                <exclude reference="aE7-5h-Vy5"/>
-                                <exclude reference="b2i-Af-nxo"/>
                                 <exclude reference="Qji-zf-Rw1"/>
                                 <exclude reference="Sos-4z-vX5"/>
                                 <exclude reference="Thz-Nq-fXm"/>
@@ -378,6 +358,23 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                 <exclude reference="FGn-d3-uBt"/>
                                 <exclude reference="P90-8L-dyv"/>
                                 <exclude reference="kBY-GH-WGd"/>
+                                <exclude reference="5hB-yz-bGk"/>
+                                <exclude reference="Mw2-0N-gu7"/>
+                                <exclude reference="Ycg-d2-r5H"/>
+                                <exclude reference="quy-rL-oS5"/>
+                                <exclude reference="5Q8-Ti-i0p"/>
+                                <exclude reference="DLf-rk-Zut"/>
+                                <exclude reference="Hbt-FV-26f"/>
+                                <exclude reference="dnQ-28-21s"/>
+                                <exclude reference="zWY-Jc-Xqg"/>
+                                <exclude reference="RUy-4B-l8L"/>
+                                <exclude reference="uDm-VA-qII"/>
+                                <exclude reference="Gsf-FF-JM4"/>
+                                <exclude reference="dtB-q5-cZz"/>
+                                <exclude reference="qQr-Ex-qe9"/>
+                                <exclude reference="qWh-2u-x9g"/>
+                                <exclude reference="ABr-2R-mqM"/>
+                                <exclude reference="odF-iC-O8V"/>
                                 <exclude reference="loP-D3-J6K"/>
                             </mask>
                         </variation>
@@ -392,28 +389,46 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                 <include reference="fx1-L9-FIz"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="W1t-Bt-Zcf"/>
-                                <include reference="u8J-MV-VbM"/>
+                                <include reference="aE7-5h-Vy5"/>
+                                <include reference="b2i-Af-nxo"/>
                                 <include reference="FKK-CZ-KFz"/>
                                 <include reference="JQg-HD-LUL"/>
                                 <include reference="KU7-Ae-TiX"/>
                                 <include reference="t00-hq-Rfw"/>
+                                <include reference="W1t-Bt-Zcf"/>
+                                <include reference="u8J-MV-VbM"/>
                                 <include reference="FeX-kE-bq2"/>
                                 <include reference="UyQ-wy-Y20"/>
                                 <include reference="i2m-Yp-Wac"/>
                                 <include reference="wST-XB-k9b"/>
-                                <exclude reference="EHx-Uz-Wum"/>
-                                <exclude reference="FFT-QW-K24"/>
-                                <include reference="RUy-4B-l8L"/>
-                                <include reference="uDm-VA-qII"/>
-                                <exclude reference="xOV-qv-cEw"/>
                                 <include reference="KQs-3d-vtU"/>
+                                <include reference="Qji-zf-Rw1"/>
+                                <include reference="Sos-4z-vX5"/>
+                                <include reference="Thz-Nq-fXm"/>
+                                <include reference="umK-uQ-SCE"/>
+                                <include reference="56y-0Y-Z9q"/>
+                                <include reference="FGn-d3-uBt"/>
+                                <include reference="P90-8L-dyv"/>
+                                <include reference="kBY-GH-WGd"/>
+                                <include reference="5hB-yz-bGk"/>
+                                <include reference="Mw2-0N-gu7"/>
+                                <exclude reference="UBe-9d-qAK"/>
+                                <exclude reference="Voz-nW-P7g"/>
+                                <include reference="Ycg-d2-r5H"/>
+                                <exclude reference="kyz-kJ-jjZ"/>
+                                <include reference="quy-rL-oS5"/>
+                                <exclude reference="s6g-ig-f4q"/>
                                 <include reference="5Q8-Ti-i0p"/>
                                 <include reference="DLf-rk-Zut"/>
                                 <include reference="Hbt-FV-26f"/>
                                 <include reference="dnQ-28-21s"/>
                                 <exclude reference="u7O-KZ-nUq"/>
                                 <include reference="zWY-Jc-Xqg"/>
+                                <exclude reference="EHx-Uz-Wum"/>
+                                <exclude reference="FFT-QW-K24"/>
+                                <include reference="RUy-4B-l8L"/>
+                                <include reference="uDm-VA-qII"/>
+                                <exclude reference="xOV-qv-cEw"/>
                                 <exclude reference="7oV-Ma-uQw"/>
                                 <include reference="Gsf-FF-JM4"/>
                                 <include reference="dtB-q5-cZz"/>
@@ -426,24 +441,6 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                 <include reference="ABr-2R-mqM"/>
                                 <include reference="odF-iC-O8V"/>
                                 <exclude reference="thh-QY-Cff"/>
-                                <include reference="5hB-yz-bGk"/>
-                                <include reference="Mw2-0N-gu7"/>
-                                <exclude reference="UBe-9d-qAK"/>
-                                <exclude reference="Voz-nW-P7g"/>
-                                <include reference="Ycg-d2-r5H"/>
-                                <exclude reference="kyz-kJ-jjZ"/>
-                                <include reference="quy-rL-oS5"/>
-                                <exclude reference="s6g-ig-f4q"/>
-                                <include reference="aE7-5h-Vy5"/>
-                                <include reference="b2i-Af-nxo"/>
-                                <include reference="Qji-zf-Rw1"/>
-                                <include reference="Sos-4z-vX5"/>
-                                <include reference="Thz-Nq-fXm"/>
-                                <include reference="umK-uQ-SCE"/>
-                                <include reference="56y-0Y-Z9q"/>
-                                <include reference="FGn-d3-uBt"/>
-                                <include reference="P90-8L-dyv"/>
-                                <include reference="kBY-GH-WGd"/>
                                 <include reference="loP-D3-J6K"/>
                             </mask>
                         </variation>
