@@ -40,32 +40,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 		}
 
-print(self.btn_StartCalc.titleLabel!.text)
+		print(self.btn_StartCalc.titleLabel!.text)
 
 		self.btn_StartCalc!.titleLabel!.text = "READY"
 		btn_StartCalc.setTitle("READY", forState: UIControlState.Normal)
 		print(self.btn_StartCalc.titleLabel!.text)
 
-tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+		tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
 		//MARK:CONVERT INPUTS TO VALUES
-		txt_Bucket1Size.text	= "3"
-		txt_Bucket2Size.text 	= "5"
+		txt_Bucket1Size.text	= "5"
+		txt_Bucket2Size.text 	= "3"
 		txt_TargetAmount.text 	= "4"
 
-		 	solveIt()
+		solveIt()
 	}
 
-	/**
-	Repeats a string `times` times.
 
-	- Parameter str:   The string to repeat.
-	- Parameter times: The number of times to repeat `str`.
-
-	- Throws: `MyError.InvalidTimes` if the `times` parameter
-	is less than zero.
-
-	- Returns: A new string with `str` repeated `times` times.
-	*/
 	@IBAction func bucket1SizeChanged() {
 		print("BUCKET 1 CHANGED SIZE")
 
@@ -74,14 +64,14 @@ tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, 
 	@IBAction func CalculateSolution() {
 
 		resetBuckets(bucket1, bucket2:bucket2)
-btn_StartCalc.setTitle("DONE", forState: UIControlState.Normal)
+		btn_StartCalc.setTitle("DONE", forState: UIControlState.Normal)
 		solveIt()
 	}
 
 
 	func solveIt(){
 		print("SOLVEIT")
-				completeSwitch = false;
+		completeSwitch = false;
 
 
 
@@ -101,10 +91,10 @@ btn_StartCalc.setTitle("DONE", forState: UIControlState.Normal)
 		//MARK: INIT BUCKETS FROM INPUT
 
 		bucket1.capacity = a
-  		bucket2.capacity = b
+		bucket2.capacity = b
 		goal 			 = c
 
-print("2")
+		print("2")
 		//MARK: CHECK IF SOLVABLE
 		solvable = verifySolvable(bucket1,bucket2:bucket2,goal:goal)
 		print("SOLVABLE ",solvable,"\n\nSOLUTION STEPS\n")
@@ -116,30 +106,36 @@ print("2")
 			//MARK: INIT BUCKETS
 			//startingBucketSize = "Large"
 			//logStatus (bucket1, bucket2:bucket2, status: "INIT")
-
-
 			print("PATH 1")
 
+			bucket1.capacity = a
+			bucket2.capacity = b
+			goal 			 = c
+			resetBuckets(bucket1, bucket2:bucket2)
+
+
 			// MARK: BEGIN BY FILLING A BUCKET 1
-			bucket1.filledFirstFlag = true
-			bucket2.filledFirstFlag = false
-			bucket1 = self.fillBucket(bucket1)
-//			logStatus (bucket2, bucket2:bucket1, status:"FILL")
+			// MARK: BEGIN BY FILLING A BUCKET
+			//			bucket1.filledFirstFlag = false
+			//			bucket2.filledFirstFlag = true
+			bucket2 = self.fillBucket(bucket2)
 			logStatus (bucket1, bucket2:bucket2, status:"FILL")
 
+			// MARK: FIND THE PATH TO SOLUITON 2
+			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
+			print("SOLUTION 2 FOUND IN ", stepNum, " STEPS\n")
 
-
-			// MARK: FIND THE PATH TO SOLUITON 1
-			self.findTheNextPathPoint(bucket2, bucket2: bucket1, goal:goal)
-			print("SOLUTION 1 FOUND IN ", stepNum, " STEPS\n")
 
 			print("PATH 2")
 
+			bucket1.capacity = b
+			bucket2.capacity = a
+			goal 			 = c
 			resetBuckets(bucket1, bucket2:bucket2)
 
-			// MARK: BEGIN BY FILLING A BUCKET 2
-			bucket1.filledFirstFlag = false
-			bucket2.filledFirstFlag = true
+			// MARK: BEGIN BY FILLING A BUCKET
+			//			bucket1.filledFirstFlag = false
+			//			bucket2.filledFirstFlag = true
 			bucket2 = self.fillBucket(bucket2)
 			logStatus (bucket1, bucket2:bucket2, status:"FILL")
 
@@ -205,7 +201,7 @@ print("2")
 	}
 
 
-	//MARK: FIND NEXT PATH POINT 
+	//MARK: FIND NEXT PATH POINT
 	/**
 	Calculates the Next Path Point in the solution.
 	- Parameter bucket1: Bucket1 Object.
@@ -214,14 +210,14 @@ print("2")
 
 	- Returns:  Bool:
 	*/
-	func findTheNextPathPoint(var bucket1: Bucket, var bucket2: Bucket, goal:Int) -> Bool {
+	func findTheNextPathPoint(var startingBucket: Bucket, var bucket2: Bucket, goal:Int) -> Bool {
 		///		completeSwitch = false
 
 
 		//TODO: if solvable do until solved flag is set
 		var solved = false
 		while solved == false {
-			if(bucket1.currentAmount == goal || bucket2.currentAmount == goal){
+			if(startingBucket.currentAmount == goal || bucket2.currentAmount == goal){
 				print("COMPLETE 4 UNITS in B...")
 				completeSwitch = true
 				return (completeSwitch)!
@@ -230,25 +226,25 @@ print("2")
 			//MARK:CASE HERE
 
 			if(solved == false){
-				if(bucket1.filledFirstFlag == true){
+
 				//TOP
 				if(bucket1.currentAmount == 0 && (solved == false)){
 					// (LARGE FIRST) TRANSFER (LARGE > SMALL)
-					// transferBucketL2S(bucket2, bucketTo: bucket1)
-					bucket1 = self.fillBucket(bucket1)
+					transferBucketL2S(bucket2, bucketTo: bucket1)
+					//bucket1 = self.fillBucket(bucket1)
 
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" FILL B1")}
+					logStatus (bucket1, bucket2:bucket2, status:" TRANSFER A L2S")}
 
 				//RIGHT
-				if(bucket1.currentAmount == bucket1.capacity  && (solved == false)){
+				if(bucket2.currentAmount == bucket2.capacity  && (solved == false)){
 					// (LARGE FIRST) TRANSFER (SMALL > LARGE)
 					transferBucketL2S(bucket2, bucketTo: bucket1)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" TRANSFER S2L")}
+					logStatus (bucket1, bucket2:bucket2, status:" TRANSFER B L2S")}
 
 				//LEFT
-				if(bucket2.currentAmount > 0 && bucket1.currentAmount < bucket2.capacity && (solved == false)){
+				if(bucket1.currentAmount > 0 && bucket1.currentAmount < bucket1.capacity && (solved == false)){
 					// (LARGE FIRST) ALWAYS FILL
 					bucket2 = self.fillBucket(bucket2)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
@@ -256,44 +252,12 @@ print("2")
 
 				//BOTTOM
 
-				if(( bucket2.currentAmount == bucket2.capacity && (solved == false))){
+				if(( bucket1.currentAmount == bucket1.capacity && (solved == false))){
 					bucket1 = self.emptyBucket(bucket1)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
 					logStatus (bucket1, bucket2:bucket2, status:" EMPTY")}
 
-				}
-				else if (bucket2.filledFirstFlag == true){
-				//TOP
-				if(bucket1.currentAmount == 0 && (solved == false)){
-				// (LARGE FIRST) TRANSFER (LARGE > SMALL)
-				transferBucketL2S(bucket2, bucketTo: bucket1)
-				//bucket1 = self.fillBucket(bucket1)
 
-				solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-				logStatus (bucket1, bucket2:bucket2, status:" TRANSFER A L2S")}
-
-				//RIGHT
-				if(bucket2.currentAmount == bucket2.capacity  && (solved == false)){
-				// (LARGE FIRST) TRANSFER (SMALL > LARGE)
-				transferBucketL2S(bucket2, bucketTo: bucket1)
-				solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-				logStatus (bucket1, bucket2:bucket2, status:" TRANSFER B L2S")}
-
-				//LEFT
-				if(bucket1.currentAmount > 0 && bucket1.currentAmount < bucket1.capacity && (solved == false)){
-				// (LARGE FIRST) ALWAYS FILL
-				bucket2 = self.fillBucket(bucket2)
-				solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-				logStatus (bucket1, bucket2:bucket2, status:" FILL ")}
-
-				//BOTTOM
-
-				if(( bucket1.currentAmount == bucket1.capacity && (solved == false))){
-				bucket1 = self.emptyBucket(bucket1)
-				solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-				logStatus (bucket1, bucket2:bucket2, status:" EMPTY")}
-
-				}
 			}
 		}
 		return (true)
@@ -353,34 +317,34 @@ print("2")
 		return bucket	}
 
 	// MARK: o Transfer From Bucket1 To Bucket2
-	func transferBucket(bucketFrom : Bucket, bucketTo : Bucket ){
-		print("BUCKET XFER (FROM) - Capacity ", bucketFrom.capacity, "\tCurrent Amount ",bucketFrom.currentAmount, "\tAvailable Capacity ", bucketFrom.availableCapacity)
-		print("BUCKET XFER ( TO ) - Capacity ", bucketTo.capacity, "\tCurrent Amount ",bucketTo.currentAmount, "\tAvailable Capacity ", bucketTo.availableCapacity)
-		if(bucketFrom.currentAmount < bucketTo.availableCapacity) {
+	//	func transferBucket(bucketFrom : Bucket, bucketTo : Bucket ){
+	//		print("BUCKET XFER (FROM) - Capacity ", bucketFrom.capacity, "\tCurrent Amount ",bucketFrom.currentAmount, "\tAvailable Capacity ", bucketFrom.availableCapacity)
+	//		print("BUCKET XFER ( TO ) - Capacity ", bucketTo.capacity, "\tCurrent Amount ",bucketTo.currentAmount, "\tAvailable Capacity ", bucketTo.availableCapacity)
+	//		if(bucketFrom.currentAmount < bucketTo.availableCapacity) {
+	//
+	//			let amountToTransfer    		= bucketFrom.currentAmount
+	//			bucketFrom.currentAmount 		= bucketFrom.currentAmount     - amountToTransfer
+	//			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
+	//			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
+	//			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
+	//
+	//
+	//		}
+	//		else {
+	//			let amountToTransfer    		= bucketFrom.currentAmount     - (bucketFrom.currentAmount - bucketTo.availableCapacity)
+	//			bucketFrom.currentAmount 		= bucketFrom.currentAmount     - amountToTransfer
+	//			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
+	//			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
+	//			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
+	//
+	//
+	//		}
+	//		print("\nBUCKET XFER (FROM) - Capacity ", bucketFrom.capacity, "\tCurrent Amount ",bucketFrom.currentAmount, "\tAvailable Capacity ", bucketFrom.availableCapacity)
+	//		print("BUCKET XFER ( TO ) - Capacity ", bucketTo.capacity, "\tCurrent Amount ",bucketTo.currentAmount, "\tAvailable Capacity ", bucketTo.availableCapacity)
+	//
+	//	}
 
-			let amountToTransfer    		= bucketFrom.currentAmount
-			bucketFrom.currentAmount 		= bucketFrom.currentAmount     - amountToTransfer
-			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
-			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
-			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
-
-
-		}
-		else {
-			let amountToTransfer    		= bucketFrom.currentAmount     - (bucketFrom.currentAmount - bucketTo.availableCapacity)
-			bucketFrom.currentAmount 		= bucketFrom.currentAmount     - amountToTransfer
-			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
-			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
-			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
-
-
-		}
-		print("\nBUCKET XFER (FROM) - Capacity ", bucketFrom.capacity, "\tCurrent Amount ",bucketFrom.currentAmount, "\tAvailable Capacity ", bucketFrom.availableCapacity)
-		print("BUCKET XFER ( TO ) - Capacity ", bucketTo.capacity, "\tCurrent Amount ",bucketTo.currentAmount, "\tAvailable Capacity ", bucketTo.availableCapacity)
-
-	}
-
-	// MARK: o Transfer 
+	// MARK: o Transfer
 	func transferBucketL2S(bucketFrom : Bucket, bucketTo : Bucket ){
 		bucketFrom.lastAction = "XFER OUT"
 		bucketTo.lastAction   = "XFER IN "
