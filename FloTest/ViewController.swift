@@ -11,41 +11,23 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+	//MARK: Set Variables
 	/** TEST */
 	private var completeSwitch : Bool? = nil
-	/** TEST */
-	private var startingBucketSize : String! = "Large"
-	/** TEST */
+	//private var startingBucketSize : String! = "Large"
 	private var stepNum : Int = 0
-	/** TEST */
 	private var solvable : Bool! = false
-	/** TEST */
 	private var goal : Int = 0
-	/** TEST */
 	private var bucket1 : Bucket = (Bucket.init(text: "Large", capacity:0))
-	/** TEST */
 	private var bucket2 : Bucket = (Bucket.init(text: "Small", capacity:0))
-
-
-
-	// MARK: - Setup
-	// MARK: o Display Solution
-	@IBOutlet  var tbl_SolutionTable: UITableView!
 	var actionItems = [ActionItem]()
 
 
-	// MARK: o Get Input
-	// MARK: > Bucket 1 Size
+	// MARK: - Outlets
+	@IBOutlet  var tbl_SolutionTable: UITableView!
 	@IBOutlet weak var txt_Bucket1Size: UITextField!
-	// MARK: > Bucket 2 Size
 	@IBOutlet weak var txt_Bucket2Size: UITextField!
-
-	// MARK: > Target Amount
 	@IBOutlet weak var txt_TargetAmount: UITextField!
-	// MARK: > Manual or Automatic
-
-
-	// MARK: o New Game
 	@IBOutlet weak var btn_StartCalc: UIButton!
 
 
@@ -56,8 +38,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			tbl_SolutionTable.dataSource = self
 			tbl_SolutionTable.delegate = self
 			tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-			self.tbl_SolutionTable.rowHeight = 440.0
-
 		}
 
 print(self.btn_StartCalc.titleLabel!.text)
@@ -68,8 +48,8 @@ print(self.btn_StartCalc.titleLabel!.text)
 
 tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
 		//MARK:CONVERT INPUTS TO VALUES
-		txt_Bucket1Size.text	= "5"
-		txt_Bucket2Size.text 	= "3"
+		txt_Bucket1Size.text	= "3"
+		txt_Bucket2Size.text 	= "5"
 		txt_TargetAmount.text 	= "4"
 
 		 	solveIt()
@@ -91,13 +71,6 @@ tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, 
 
 	}
 
-	/**
-	Just a clarification for those new to Swift and IOS programming. The line button.setTitle("myTitle", forState: UIControlState.Normal) only applies to IBOutlets, not IBActions.
-
-	So, if your app is using a button as a function to execute some code, say playing music, and you want to change the title from Play to Pause based on a toggle variable, you need to also create an IBOutlet for that button.
-
-	http://stackoverflow.com/questions/26326296/changing-text-of-uibutton-programatically-swift
-	*/
 	@IBAction func CalculateSolution() {
 
 		resetBuckets(bucket1, bucket2:bucket2)
@@ -140,16 +113,21 @@ print("2")
 
 		if((solvable) == true){
 
-			//MARK: SET THE STARTING BUCKET
-			startingBucketSize = "Large"
-			logStatus (bucket1, bucket2:bucket2, status: "INIT")
+			//MARK: INIT BUCKETS
+			//startingBucketSize = "Large"
+			//logStatus (bucket1, bucket2:bucket2, status: "INIT")
 
 
 			print("PATH 1")
 
 			// MARK: BEGIN BY FILLING A BUCKET 1
+			bucket1.filledFirstFlag = true
+			bucket2.filledFirstFlag = false
 			bucket1 = self.fillBucket(bucket1)
-			logStatus (bucket2, bucket2:bucket1, status:"FILL")
+//			logStatus (bucket2, bucket2:bucket1, status:"FILL")
+			logStatus (bucket1, bucket2:bucket2, status:"FILL")
+
+
 
 			// MARK: FIND THE PATH TO SOLUITON 1
 			self.findTheNextPathPoint(bucket2, bucket2: bucket1, goal:goal)
@@ -160,6 +138,8 @@ print("2")
 			resetBuckets(bucket1, bucket2:bucket2)
 
 			// MARK: BEGIN BY FILLING A BUCKET 2
+			bucket1.filledFirstFlag = false
+			bucket2.filledFirstFlag = true
 			bucket2 = self.fillBucket(bucket2)
 			logStatus (bucket1, bucket2:bucket2, status:"FILL")
 
@@ -176,12 +156,14 @@ print("2")
 		bucket2.availableCapacity = bucket2.capacity
 		bucket1.currentAmount = 0
 		bucket2.currentAmount = 0
+		bucket1.filledFirstFlag = false
+		bucket2.filledFirstFlag = false
 	}
 
 
 	func verifySolvable(bucket1:Bucket,bucket2:Bucket, goal:Int)->Bool {
 		//MARK: CHECK FOR SOLUITONS
-		var hasGCD = gcd(bucket1.capacity, bucket2Size: bucket2.capacity)
+		let hasGCD = gcd(bucket1.capacity, bucket2Size: bucket2.capacity)
 		print("CHECK FOR SOLVABLE")
 		print(" bucket1 - ",bucket1.capacity)
 		print(" bucket2 - ",bucket2.capacity)
@@ -248,35 +230,70 @@ print("2")
 			//MARK:CASE HERE
 
 			if(solved == false){
+				if(bucket1.filledFirstFlag == true){
 				//TOP
 				if(bucket1.currentAmount == 0 && (solved == false)){
 					// (LARGE FIRST) TRANSFER (LARGE > SMALL)
-					transferBucketL2S(bucket2, bucketTo: bucket1)
+					// transferBucketL2S(bucket2, bucketTo: bucket1)
+					bucket1 = self.fillBucket(bucket1)
+
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" TOP ")}
+					logStatus (bucket1, bucket2:bucket2, status:" FILL B1")}
 
 				//RIGHT
-				if(bucket2.currentAmount == bucket2.capacity  && (solved == false)){
+				if(bucket1.currentAmount == bucket1.capacity  && (solved == false)){
 					// (LARGE FIRST) TRANSFER (SMALL > LARGE)
 					transferBucketL2S(bucket2, bucketTo: bucket1)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" RIGHT ")}
+					logStatus (bucket1, bucket2:bucket2, status:" TRANSFER S2L")}
 
 				//LEFT
-				if(bucket1.currentAmount > 0 && bucket1.currentAmount < bucket1.capacity && (solved == false)){
+				if(bucket2.currentAmount > 0 && bucket1.currentAmount < bucket2.capacity && (solved == false)){
 					// (LARGE FIRST) ALWAYS FILL
 					bucket2 = self.fillBucket(bucket2)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" LEFT  ")}
+					logStatus (bucket1, bucket2:bucket2, status:" FILL ")}
+
+				//BOTTOM
+
+				if(( bucket2.currentAmount == bucket2.capacity && (solved == false))){
+					bucket1 = self.emptyBucket(bucket1)
+					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
+					logStatus (bucket1, bucket2:bucket2, status:" EMPTY")}
+
+				}
+				else if (bucket2.filledFirstFlag == true){
+				//TOP
+				if(bucket1.currentAmount == 0 && (solved == false)){
+				// (LARGE FIRST) TRANSFER (LARGE > SMALL)
+				transferBucketL2S(bucket2, bucketTo: bucket1)
+				//bucket1 = self.fillBucket(bucket1)
+
+				solved = getScore(bucket1,bucket2: bucket2,goal:goal)
+				logStatus (bucket1, bucket2:bucket2, status:" TRANSFER A L2S")}
+
+				//RIGHT
+				if(bucket2.currentAmount == bucket2.capacity  && (solved == false)){
+				// (LARGE FIRST) TRANSFER (SMALL > LARGE)
+				transferBucketL2S(bucket2, bucketTo: bucket1)
+				solved = getScore(bucket1,bucket2: bucket2,goal:goal)
+				logStatus (bucket1, bucket2:bucket2, status:" TRANSFER B L2S")}
+
+				//LEFT
+				if(bucket1.currentAmount > 0 && bucket1.currentAmount < bucket1.capacity && (solved == false)){
+				// (LARGE FIRST) ALWAYS FILL
+				bucket2 = self.fillBucket(bucket2)
+				solved = getScore(bucket1,bucket2: bucket2,goal:goal)
+				logStatus (bucket1, bucket2:bucket2, status:" FILL ")}
 
 				//BOTTOM
 
 				if(( bucket1.currentAmount == bucket1.capacity && (solved == false))){
-					bucket1 = self.emptyBucket(bucket1)
-					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:"BOTTOM")}
+				bucket1 = self.emptyBucket(bucket1)
+				solved = getScore(bucket1,bucket2: bucket2,goal:goal)
+				logStatus (bucket1, bucket2:bucket2, status:" EMPTY")}
 
-
+				}
 			}
 		}
 		return (true)
@@ -292,16 +309,16 @@ print("2")
 	//MARK: LOGS
 	func logStatus (bucket1:Bucket, bucket2:Bucket, status:String){
 		stepNum = stepNum + 1
-		print("ACTION   - STEP ",stepNum, "\tSTARTING BUCKET ",startingBucketSize, "\t[",status, "]")
+		print("ACTION   - STEP ",stepNum, "\tSTARTING BUCKET ", "\t[",status, "]")
 		logBucketStatus(bucket1)
 		logBucketStatus(bucket2)
 		print("\n")
 
 		//MARK :ADD STATUS DATA TO TABLE
-		var scoreMessage 	= String(bucket1.currentAmount)+"\t|\t"+String(bucket2.currentAmount)
-		var stepMessage 	= "\t"+String(stepNum)
-		var statusMessage 	= " - "+status
-		var lineToAdd = scoreMessage+stepMessage+statusMessage
+		let scoreMessage 	= String(bucket1.currentAmount)+"\t|\t"+String(bucket2.currentAmount)
+		let stepMessage 	= "\t"+String(stepNum)
+		let statusMessage 	= " - "+status
+		let lineToAdd = scoreMessage+stepMessage+statusMessage
 		actionItems.append(ActionItem(text: lineToAdd))
 		tbl_SolutionTable.reloadData()
 	}
@@ -315,8 +332,6 @@ print("2")
 
 
 	// MARK: - Actions
-	// MARK: o Select Bucket
-	// MARK: o Select Action
 
 	// MARK: o Fill Bucket
 	func fillBucket(bucket : Bucket) -> Bucket {
@@ -365,10 +380,10 @@ print("2")
 
 	}
 
-	// MARK: o Transfer From Bucket2 To Bucket1
+	// MARK: o Transfer 
 	func transferBucketL2S(bucketFrom : Bucket, bucketTo : Bucket ){
 		bucketFrom.lastAction = "XFER OUT"
-		bucketTo.lastAction = "XFER IN "
+		bucketTo.lastAction   = "XFER IN "
 
 		if(bucketFrom.currentAmount < bucketTo.availableCapacity) {
 
@@ -389,9 +404,6 @@ print("2")
 
 
 		}
-		//
-		//        logBucketStatus(bucketFrom)
-		//		logBucketStatus(bucketTo)
 	}
 
 	//MARK: * ROTATION
@@ -422,13 +434,11 @@ print("2")
 
 	func tableView(tableView: UITableView,
 		cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-			let cell =  tableView.dequeueReusableCellWithIdentifier("stepCell",
-			forIndexPath: indexPath) as! SolutionStep //UITableViewCell
+			let cell = tableView.dequeueReusableCellWithIdentifier("scoreCell",
+				forIndexPath: indexPath)
 			let item = actionItems[indexPath.row]
-			cell.title?.text = item.text
-			cell.subTitle?.text = "..."
-			cell.detail?.text = "You've got to diffuse a bomb by placing exactly 4 gallons of water on a sensor. The problem is, you only have a 5 gallon (18.9 L) jug and a 3 gallon jug on hand! This classic riddle, made famous in Die Hard 3, may seem impossible without a measuring cup, but it is actually remarkably simple. Click here to watch the clip from the movie if you need to refresh your memory. For the solution, click here to skip to the answer. If you want guidance and hints to solving it on your own, scroll down."
-			//cell.stepImage?.image =  "Start"
+			cell.textLabel?.text = item.text
+			cell.detailTextLabel?.text = "You've got to diffuse a bomb by placing exactly 4 gallons of water on a sensor. The problem is, you only have a 5 gallon (18.9 L) jug and a 3 gallon jug on hand! This classic riddle, made famous in Die Hard 3, may seem impossible without a measuring cup, but it is actually remarkably simple. Click here to watch the clip from the movie if you need to refresh your memory. For the solution, click here to skip to the answer. If you want guidance and hints to solving it on your own, scroll down."
 			return cell
 	}
 	

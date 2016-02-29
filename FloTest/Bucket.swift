@@ -25,6 +25,8 @@ class Bucket: NSObject {
 	var  availableCapacity: Int
 
 
+	//
+	var filledFirstFlag:Bool
 
 	// Returns a Bucket initialized with the given text and default completed value.
 	init(text: String, capacity: Int) {
@@ -33,6 +35,7 @@ class Bucket: NSObject {
 		self.capacity = capacity
 		self.currentAmount = 0
 		self.availableCapacity = self.capacity - self.currentAmount
+		self.filledFirstFlag = false
 		
 	}
 }
