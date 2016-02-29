@@ -18,8 +18,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	private var stepNum : Int = 0
 	private var solvable : Bool! = false
 	private var goal : Int = 0
-	private var bucket1 : Bucket = (Bucket.init(text: "Large", capacity:0))
-	private var bucket2 : Bucket = (Bucket.init(text: "Small", capacity:0))
+	private var bucket1 : Bucket = (Bucket.init(text: "B1", capacity:0))
+	private var bucket2 : Bucket = (Bucket.init(text: "B2", capacity:0))
 	var actionItems = [ActionItem]()
 
 
@@ -119,7 +119,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			//			bucket1.filledFirstFlag = false
 			//			bucket2.filledFirstFlag = true
 			bucket2 = self.fillBucket(bucket2)
-			logStatus (bucket1, bucket2:bucket2, status:"FILL")
+			logStatus (bucket1, bucket2:bucket2, status:" FILL")
 
 			// MARK: FIND THE PATH TO SOLUITON 2
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
@@ -137,7 +137,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			//			bucket1.filledFirstFlag = false
 			//			bucket2.filledFirstFlag = true
 			bucket2 = self.fillBucket(bucket2)
-			logStatus (bucket1, bucket2:bucket2, status:"FILL")
+			logStatus (bucket1, bucket2:bucket2, status:" FILL")
 
 			// MARK: FIND THE PATH TO SOLUITON 2
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
@@ -234,14 +234,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 					//bucket1 = self.fillBucket(bucket1)
 
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" TRANSFER A L2S")}
+					logStatus (bucket1, bucket2:bucket2, status:" TRANSFER")}
 
 				//RIGHT
 				if(bucket2.currentAmount == bucket2.capacity  && (solved == false)){
 					// (LARGE FIRST) TRANSFER (SMALL > LARGE)
 					transferBucketL2S(bucket2, bucketTo: bucket1)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
-					logStatus (bucket1, bucket2:bucket2, status:" TRANSFER B L2S")}
+					logStatus (bucket1, bucket2:bucket2, status:" TRANSFER")}
 
 				//LEFT
 				if(bucket1.currentAmount > 0 && bucket1.currentAmount < bucket1.capacity && (solved == false)){
