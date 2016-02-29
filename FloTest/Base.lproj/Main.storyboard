@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -26,26 +25,53 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="DVk-mb-hZQ"/>
                                     <constraint firstAttribute="width" constant="50" id="ZuR-je-Ch2"/>
-                                    <constraint firstAttribute="width" constant="135" id="c9A-gG-nWr"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="pJA-tL-CM3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="DVk-mb-hZQ"/>
                                         <exclude reference="ZuR-je-Ch2"/>
+                                        <exclude reference="pJA-tL-CM3"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="DVk-mb-hZQ"/>
                                         <include reference="ZuR-je-Ch2"/>
-                                        <exclude reference="c9A-gG-nWr"/>
+                                        <include reference="pJA-tL-CM3"/>
                                     </mask>
                                 </variation>
                                 <connections>
                                     <action selector="bucket1SizeChanged" destination="BYZ-38-t0r" eventType="editingDidEnd" id="FX3-Ou-6wH"/>
                                 </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" placeholder="3" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="w1A-GJ-c28">
+                                <rect key="frame" x="165" y="129" width="73" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="47" id="Sjy-bW-S0W">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="30" id="Tyh-5N-nQ2"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="gtS-Ij-Nfu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Sjy-bW-S0W"/>
+                                        <exclude reference="Tyh-5N-nQ2"/>
+                                        <exclude reference="gtS-Ij-Nfu"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Sjy-bW-S0W"/>
+                                        <include reference="Tyh-5N-nQ2"/>
+                                        <include reference="gtS-Ij-Nfu"/>
+                                    </mask>
+                                </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4" borderStyle="roundedRect" placeholder="4" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yNd-Yb-sJO">
                                 <rect key="frame" x="360" y="129" width="94" height="30"/>
@@ -54,51 +80,37 @@
                                     <constraint firstAttribute="width" constant="45" id="9cI-ow-2AW">
                                         <variation key="heightClass=regular-widthClass=compact" constant="50"/>
                                     </constraint>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="zMg-52-4dT"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="VdV-aS-yBK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="4Um-uN-V0y"/>
                                         <exclude reference="9cI-ow-2AW"/>
-                                        <exclude reference="zMg-52-4dT"/>
+                                        <exclude reference="VdV-aS-yBK"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="4Um-uN-V0y"/>
                                         <include reference="9cI-ow-2AW"/>
-                                        <include reference="zMg-52-4dT"/>
+                                        <include reference="VdV-aS-yBK"/>
                                     </mask>
                                 </variation>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="B1" translatesAutoresizingMaskIntoConstraints="NO" id="Hl6-b1-ZKk">
-                                <rect key="frame" x="369" y="0.0" width="85" height="121"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Hl6-b1-ZKk" secondAttribute="height" multiplier="86:121" id="nGR-X3-T0h">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="1.057851239669418"/>
-                                    </constraint>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="nGR-X3-T0h"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="nGR-X3-T0h"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="B2" translatesAutoresizingMaskIntoConstraints="NO" id="eqE-Km-B8E">
                                 <rect key="frame" x="258" y="0.0" width="84" height="121"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="GGE-bu-haV"/>
                                     <constraint firstAttribute="width" secondItem="eqE-Km-B8E" secondAttribute="height" multiplier="84:121" id="Gcm-ad-y9D"/>
+                                    <constraint firstAttribute="width" constant="85" id="Nue-dx-a13"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="GGE-bu-haV"/>
                                         <exclude reference="Gcm-ad-y9D"/>
+                                        <exclude reference="Nue-dx-a13"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" ambiguous="YES">
@@ -106,7 +118,9 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
+                                        <include reference="GGE-bu-haV"/>
                                         <include reference="Gcm-ad-y9D"/>
+                                        <include reference="Nue-dx-a13"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -114,17 +128,20 @@
                                 <rect key="frame" x="165" y="24" width="68" height="97"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="97" id="7T1-0n-QZX"/>
+                                    <constraint firstAttribute="width" constant="67" id="fhE-II-WaW"/>
                                     <constraint firstAttribute="width" secondItem="ibj-AW-Cuh" secondAttribute="height" multiplier="67:97" id="i3y-Uj-VCc"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="7T1-0n-QZX"/>
+                                        <exclude reference="fhE-II-WaW"/>
                                         <exclude reference="i3y-Uj-VCc"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="7T1-0n-QZX"/>
+                                        <include reference="fhE-II-WaW"/>
                                         <include reference="i3y-Uj-VCc"/>
                                     </mask>
                                 </variation>
@@ -208,31 +225,12 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="172" y="96" width="49" height="20"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8s-wS-efV">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="oaG-PS-XJy"/>
-                                    <constraint firstAttribute="width" constant="44" id="vp4-6c-6Bw"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="oaG-PS-XJy"/>
-                                        <exclude reference="vp4-6c-6Bw"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="oaG-PS-XJy"/>
-                                        <include reference="vp4-6c-6Bw"/>
-                                    </mask>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="X0F-Wo-hDI">
                                 <rect key="frame" x="534" y="104" width="46" height="30"/>
@@ -284,43 +282,40 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                     </mask>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" placeholder="3" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="w1A-GJ-c28">
-                                <rect key="frame" x="165" y="129" width="73" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="B1" translatesAutoresizingMaskIntoConstraints="NO" id="Hl6-b1-ZKk">
+                                <rect key="frame" x="369" y="0.0" width="85" height="121"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="QjK-S5-Tvq"/>
-                                    <constraint firstAttribute="width" constant="47" id="Sjy-bW-S0W">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                                    <constraint firstAttribute="width" constant="70" id="IkL-RM-enK"/>
+                                    <constraint firstAttribute="height" constant="97" id="Moy-wt-ila"/>
+                                    <constraint firstAttribute="width" secondItem="Hl6-b1-ZKk" secondAttribute="height" multiplier="86:121" id="nGR-X3-T0h">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="1.057851239669418"/>
                                     </constraint>
-                                    <constraint firstAttribute="height" constant="30" id="Tyh-5N-nQ2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="QjK-S5-Tvq"/>
-                                        <exclude reference="Sjy-bW-S0W"/>
-                                        <exclude reference="Tyh-5N-nQ2"/>
+                                        <exclude reference="IkL-RM-enK"/>
+                                        <exclude reference="Moy-wt-ila"/>
+                                        <exclude reference="nGR-X3-T0h"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="288" y="154" width="70" height="97"/>
                                     <mask key="constraints">
-                                        <include reference="QjK-S5-Tvq"/>
-                                        <include reference="Sjy-bW-S0W"/>
-                                        <include reference="Tyh-5N-nQ2"/>
+                                        <include reference="IkL-RM-enK"/>
+                                        <include reference="Moy-wt-ila"/>
+                                        <include reference="nGR-X3-T0h"/>
                                     </mask>
                                 </variation>
-                            </textField>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4PA-xM-rwa" firstAttribute="leading" secondItem="w1A-GJ-c28" secondAttribute="leading" id="01E-fM-iF4"/>
+                            <constraint firstItem="S8s-wS-efV" firstAttribute="centerX" secondItem="yNd-Yb-sJO" secondAttribute="centerX" id="0sT-1C-qBj"/>
                             <constraint firstItem="Hl6-b1-ZKk" firstAttribute="bottom" secondItem="eqE-Km-B8E" secondAttribute="bottom" id="2sG-Wi-Uic"/>
                             <constraint firstItem="X0F-Wo-hDI" firstAttribute="baseline" secondItem="yNd-Yb-sJO" secondAttribute="baseline" id="45C-91-yfr"/>
                             <constraint firstItem="ZKj-V6-zrV" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="56y-0Y-Z9q"/>
+                            <constraint firstItem="w1A-GJ-c28" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="35" id="5Q8-Ti-i0p"/>
                             <constraint firstItem="Pev-jy-F5X" firstAttribute="leading" secondItem="KAt-j9-giL" secondAttribute="leading" id="5hB-yz-bGk"/>
-                            <constraint firstItem="S8s-wS-efV" firstAttribute="trailing" secondItem="yNd-Yb-sJO" secondAttribute="trailing" id="7aX-Fu-t3g">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-3"/>
-                            </constraint>
                             <constraint firstItem="yNd-Yb-sJO" firstAttribute="leading" secondItem="w1A-GJ-c28" secondAttribute="leading" id="7oV-Ma-uQw"/>
                             <constraint firstItem="PXc-gM-ROC" firstAttribute="centerX" secondItem="eqE-Km-B8E" secondAttribute="centerX" id="9fL-S4-f2Z">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-4"/>
@@ -328,31 +323,36 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                             <constraint firstItem="X0F-Wo-hDI" firstAttribute="top" secondItem="PXc-gM-ROC" secondAttribute="bottom" constant="26" id="ABr-2R-mqM">
                                 <variation key="heightClass=regular-widthClass=compact" constant="174"/>
                             </constraint>
-                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="baseline" secondItem="S8s-wS-efV" secondAttribute="baseline" id="Cie-op-IuY"/>
                             <constraint firstItem="eqE-Km-B8E" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="D1i-q8-SBd"/>
                             <constraint firstItem="w1A-GJ-c28" firstAttribute="baseline" secondItem="PXc-gM-ROC" secondAttribute="baseline" id="DLf-rk-Zut"/>
                             <constraint firstItem="yNd-Yb-sJO" firstAttribute="centerX" secondItem="Hl6-b1-ZKk" secondAttribute="centerX" id="DaZ-jF-FQC">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-2"/>
                             </constraint>
                             <constraint firstItem="PXc-gM-ROC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="EHx-Uz-Wum"/>
+                            <constraint firstItem="S8s-wS-efV" firstAttribute="baseline" secondItem="CCt-Xa-4aV" secondAttribute="baseline" id="Em1-xq-xEj"/>
                             <constraint firstItem="PXc-gM-ROC" firstAttribute="trailing" secondItem="w1A-GJ-c28" secondAttribute="trailing" id="FFT-QW-K24"/>
                             <constraint firstItem="ZKj-V6-zrV" firstAttribute="top" secondItem="zcC-Jb-uTz" secondAttribute="bottom" constant="10" id="FGn-d3-uBt"/>
+                            <constraint firstItem="4PA-xM-rwa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="95" id="FKK-CZ-KFz"/>
+                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="leading" secondItem="PXc-gM-ROC" secondAttribute="leading" id="FeX-kE-bq2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yNd-Yb-sJO" secondAttribute="trailing" constant="32" id="Gsf-FF-JM4"/>
+                            <constraint firstItem="4PA-xM-rwa" firstAttribute="leading" secondItem="w1A-GJ-c28" secondAttribute="leading" id="JQg-HD-LUL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hl6-b1-ZKk" secondAttribute="trailing" constant="20" id="JpM-A0-8dZ"/>
+                            <constraint firstItem="4PA-xM-rwa" firstAttribute="top" secondItem="w1A-GJ-c28" secondAttribute="bottom" id="KU7-Ae-TiX"/>
                             <constraint firstItem="Pev-jy-F5X" firstAttribute="bottom" secondItem="ZKj-V6-zrV" secondAttribute="bottom" id="Mw2-0N-gu7"/>
                             <constraint firstItem="ZKj-V6-zrV" firstAttribute="top" secondItem="X0F-Wo-hDI" secondAttribute="bottom" constant="37" id="P90-8L-dyv">
                                 <variation key="heightClass=regular-widthClass=compact" constant="68"/>
                             </constraint>
                             <constraint firstItem="zcC-Jb-uTz" firstAttribute="centerX" secondItem="X0F-Wo-hDI" secondAttribute="centerX" id="Qji-zf-Rw1"/>
+                            <constraint firstItem="PXc-gM-ROC" firstAttribute="top" secondItem="B7H-er-pAc" secondAttribute="bottom" constant="5" id="RUy-4B-l8L"/>
                             <constraint firstItem="zcC-Jb-uTz" firstAttribute="leading" secondItem="ZKj-V6-zrV" secondAttribute="leading" id="Sos-4z-vX5"/>
                             <constraint firstItem="zcC-Jb-uTz" firstAttribute="trailing" secondItem="X0F-Wo-hDI" secondAttribute="trailing" id="Thz-Nq-fXm"/>
                             <constraint firstItem="Pev-jy-F5X" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="UBe-9d-qAK"/>
                             <constraint firstItem="w1A-GJ-c28" firstAttribute="centerX" secondItem="ibj-AW-Cuh" secondAttribute="centerX" id="UcQ-3k-u2i">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-3.5"/>
                             </constraint>
+                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="top" secondItem="PXc-gM-ROC" secondAttribute="bottom" constant="1" id="UyQ-wy-Y20"/>
                             <constraint firstItem="Pev-jy-F5X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Voz-nW-P7g"/>
                             <constraint firstItem="B7H-er-pAc" firstAttribute="leading" secondItem="X0F-Wo-hDI" secondAttribute="leading" id="W1t-Bt-Zcf"/>
-                            <constraint firstItem="X0F-Wo-hDI" firstAttribute="top" secondItem="4PA-xM-rwa" secondAttribute="bottom" constant="8" symbolic="YES" id="WWI-lC-INa">
-                                <variation key="heightClass=regular-widthClass=compact" constant="148"/>
-                            </constraint>
                             <constraint firstItem="Hl6-b1-ZKk" firstAttribute="top" secondItem="eqE-Km-B8E" secondAttribute="top" id="WtQ-8i-kPT">
                                 <variation key="heightClass=regular-widthClass=compact" constant="25"/>
                             </constraint>
@@ -366,38 +366,21 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                 <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                             </constraint>
                             <constraint firstItem="KAt-j9-giL" firstAttribute="leading" secondItem="zcC-Jb-uTz" secondAttribute="leading" id="b2i-Af-nxo"/>
-                            <constraint firstItem="S8s-wS-efV" firstAttribute="centerX" secondItem="yNd-Yb-sJO" secondAttribute="centerX" id="cAY-Ln-O7A">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                            </constraint>
-                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="centerX" secondItem="PXc-gM-ROC" secondAttribute="centerX" id="cdn-fD-JgI">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                            </constraint>
+                            <constraint firstItem="w1A-GJ-c28" firstAttribute="top" secondItem="B7H-er-pAc" secondAttribute="bottom" constant="5" id="dnQ-28-21s"/>
+                            <constraint firstItem="yNd-Yb-sJO" firstAttribute="top" secondItem="B7H-er-pAc" secondAttribute="bottom" constant="5" id="dtB-q5-cZz"/>
                             <constraint firstItem="yNd-Yb-sJO" firstAttribute="centerX" secondItem="Pev-jy-F5X" secondAttribute="centerX" id="gqL-t8-q4T"/>
                             <constraint firstItem="eqE-Km-B8E" firstAttribute="leading" secondItem="ibj-AW-Cuh" secondAttribute="trailing" constant="42" id="hUH-Sn-OaH">
                                 <variation key="heightClass=regular-widthClass=compact" constant="41"/>
                             </constraint>
-                            <constraint firstItem="PXc-gM-ROC" firstAttribute="baseline" secondItem="yNd-Yb-sJO" secondAttribute="baseline" id="hmX-n8-vyH"/>
-                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="baseline" secondItem="4PA-xM-rwa" secondAttribute="firstBaseline" id="iIy-wl-fA2">
-                                <variation key="heightClass=regular-widthClass=compact" constant="1"/>
-                            </constraint>
+                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="centerX" secondItem="PXc-gM-ROC" secondAttribute="centerX" id="i2m-Yp-Wac"/>
                             <constraint firstItem="ZKj-V6-zrV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kBY-GH-WGd"/>
-                            <constraint firstItem="4PA-xM-rwa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="240" id="kTf-JI-pZN">
-                                <variation key="heightClass=regular-widthClass=compact" constant="95"/>
-                            </constraint>
-                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="centerX" secondItem="eqE-Km-B8E" secondAttribute="centerX" id="klH-jm-YVM">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-4"/>
-                            </constraint>
                             <constraint firstAttribute="bottom" secondItem="Pev-jy-F5X" secondAttribute="bottom" constant="20" symbolic="YES" id="kyz-kJ-jjZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZKj-V6-zrV" secondAttribute="bottom" constant="20" id="loP-D3-J6K"/>
-                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="baseline" secondItem="4PA-xM-rwa" secondAttribute="baseline" id="ner-JH-HQA">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-5"/>
-                            </constraint>
                             <constraint firstItem="X0F-Wo-hDI" firstAttribute="centerX" secondItem="PXc-gM-ROC" secondAttribute="centerX" id="odF-iC-O8V">
                                 <variation key="heightClass=regular-widthClass=compact" constant="4"/>
                             </constraint>
-                            <constraint firstAttribute="trailingMargin" secondItem="S8s-wS-efV" secondAttribute="trailing" constant="49" id="pHg-Xb-LKH">
-                                <variation key="heightClass=regular-widthClass=compact" constant="35"/>
-                            </constraint>
+                            <constraint firstItem="ibj-AW-Cuh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="onu-fq-aV4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yNd-Yb-sJO" secondAttribute="trailing" constant="32" id="qWh-2u-x9g"/>
                             <constraint firstItem="Pev-jy-F5X" firstAttribute="top" secondItem="X0F-Wo-hDI" secondAttribute="bottom" constant="8" symbolic="YES" id="quy-rL-oS5"/>
                             <constraint firstItem="w1A-GJ-c28" firstAttribute="top" secondItem="ibj-AW-Cuh" secondAttribute="bottom" constant="17" id="reu-su-PsY">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-186"/>
@@ -407,12 +390,10 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                             </constraint>
                             <constraint firstItem="Pev-jy-F5X" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="250" id="s6g-ig-f4q"/>
                             <constraint firstItem="yNd-Yb-sJO" firstAttribute="top" secondItem="w1A-GJ-c28" secondAttribute="bottom" constant="8" symbolic="YES" id="stk-7w-tSF"/>
+                            <constraint firstItem="4PA-xM-rwa" firstAttribute="trailing" secondItem="w1A-GJ-c28" secondAttribute="trailing" id="t00-hq-Rfw"/>
                             <constraint firstItem="X0F-Wo-hDI" firstAttribute="trailing" secondItem="Pev-jy-F5X" secondAttribute="trailing" id="thh-QY-Cff"/>
                             <constraint firstItem="w1A-GJ-c28" firstAttribute="top" secondItem="PXc-gM-ROC" secondAttribute="bottom" constant="8" symbolic="YES" id="u7O-KZ-nUq"/>
                             <constraint firstItem="B7H-er-pAc" firstAttribute="trailing" secondItem="KAt-j9-giL" secondAttribute="trailing" id="u8J-MV-VbM"/>
-                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="leading" secondItem="4PA-xM-rwa" secondAttribute="trailing" constant="75" id="uUS-0P-S8g">
-                                <variation key="heightClass=regular-widthClass=compact" constant="67"/>
-                            </constraint>
                             <constraint firstItem="zcC-Jb-uTz" firstAttribute="top" secondItem="KAt-j9-giL" secondAttribute="bottom" constant="3" id="umK-uQ-SCE"/>
                             <constraint firstItem="yNd-Yb-sJO" firstAttribute="trailing" secondItem="w1A-GJ-c28" secondAttribute="trailing" id="vub-Eh-81U"/>
                             <constraint firstItem="PXc-gM-ROC" firstAttribute="leading" secondItem="w1A-GJ-c28" secondAttribute="leading" id="xOV-qv-cEw"/>
@@ -433,37 +414,41 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                             <mask key="constraints">
                                 <exclude reference="W1t-Bt-Zcf"/>
                                 <exclude reference="u8J-MV-VbM"/>
+                                <exclude reference="5Q8-Ti-i0p"/>
                                 <exclude reference="DLf-rk-Zut"/>
                                 <exclude reference="UcQ-3k-u2i"/>
+                                <exclude reference="dnQ-28-21s"/>
                                 <exclude reference="reu-su-PsY"/>
                                 <exclude reference="zWY-Jc-Xqg"/>
-                                <exclude reference="01E-fM-iF4"/>
-                                <exclude reference="kTf-JI-pZN"/>
+                                <exclude reference="FKK-CZ-KFz"/>
+                                <exclude reference="JQg-HD-LUL"/>
+                                <exclude reference="KU7-Ae-TiX"/>
+                                <exclude reference="t00-hq-Rfw"/>
                                 <exclude reference="XZQ-f6-oq7"/>
+                                <exclude reference="onu-fq-aV4"/>
                                 <exclude reference="rsS-dO-iXo"/>
                                 <exclude reference="9fL-S4-f2Z"/>
-                                <exclude reference="hmX-n8-vyH"/>
-                                <exclude reference="Cie-op-IuY"/>
-                                <exclude reference="cdn-fD-JgI"/>
-                                <exclude reference="iIy-wl-fA2"/>
-                                <exclude reference="klH-jm-YVM"/>
-                                <exclude reference="ner-JH-HQA"/>
-                                <exclude reference="uUS-0P-S8g"/>
+                                <exclude reference="RUy-4B-l8L"/>
+                                <exclude reference="FeX-kE-bq2"/>
+                                <exclude reference="UyQ-wy-Y20"/>
+                                <exclude reference="i2m-Yp-Wac"/>
                                 <exclude reference="hUH-Sn-OaH"/>
                                 <exclude reference="ABr-2R-mqM"/>
-                                <exclude reference="WWI-lC-INa"/>
                                 <exclude reference="odF-iC-O8V"/>
                                 <exclude reference="DaZ-jF-FQC"/>
+                                <exclude reference="Gsf-FF-JM4"/>
+                                <exclude reference="dtB-q5-cZz"/>
+                                <exclude reference="qWh-2u-x9g"/>
                                 <exclude reference="5hB-yz-bGk"/>
                                 <exclude reference="Mw2-0N-gu7"/>
                                 <exclude reference="Ycg-d2-r5H"/>
                                 <exclude reference="quy-rL-oS5"/>
                                 <exclude reference="aE7-5h-Vy5"/>
                                 <exclude reference="b2i-Af-nxo"/>
-                                <exclude reference="7aX-Fu-t3g"/>
-                                <exclude reference="cAY-Ln-O7A"/>
-                                <exclude reference="pHg-Xb-LKH"/>
+                                <exclude reference="0sT-1C-qBj"/>
+                                <exclude reference="Em1-xq-xEj"/>
                                 <exclude reference="2sG-Wi-Uic"/>
+                                <exclude reference="JpM-A0-8dZ"/>
                                 <exclude reference="WtQ-8i-kPT"/>
                                 <exclude reference="ZPC-py-XKP"/>
                                 <exclude reference="aFt-Ly-3lP"/>
@@ -491,36 +476,40 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                             <mask key="constraints">
                                 <include reference="W1t-Bt-Zcf"/>
                                 <include reference="u8J-MV-VbM"/>
+                                <include reference="5Q8-Ti-i0p"/>
                                 <include reference="DLf-rk-Zut"/>
                                 <include reference="UcQ-3k-u2i"/>
+                                <include reference="dnQ-28-21s"/>
                                 <include reference="reu-su-PsY"/>
                                 <exclude reference="u7O-KZ-nUq"/>
                                 <include reference="zWY-Jc-Xqg"/>
-                                <include reference="01E-fM-iF4"/>
-                                <include reference="kTf-JI-pZN"/>
+                                <include reference="FKK-CZ-KFz"/>
+                                <include reference="JQg-HD-LUL"/>
+                                <include reference="KU7-Ae-TiX"/>
+                                <include reference="t00-hq-Rfw"/>
                                 <include reference="XZQ-f6-oq7"/>
+                                <include reference="onu-fq-aV4"/>
                                 <include reference="rsS-dO-iXo"/>
                                 <include reference="9fL-S4-f2Z"/>
                                 <exclude reference="EHx-Uz-Wum"/>
                                 <exclude reference="FFT-QW-K24"/>
-                                <include reference="hmX-n8-vyH"/>
+                                <include reference="RUy-4B-l8L"/>
                                 <exclude reference="xOV-qv-cEw"/>
-                                <include reference="Cie-op-IuY"/>
-                                <include reference="cdn-fD-JgI"/>
-                                <include reference="iIy-wl-fA2"/>
-                                <include reference="klH-jm-YVM"/>
-                                <include reference="ner-JH-HQA"/>
-                                <include reference="uUS-0P-S8g"/>
+                                <include reference="FeX-kE-bq2"/>
+                                <include reference="UyQ-wy-Y20"/>
+                                <include reference="i2m-Yp-Wac"/>
                                 <exclude reference="D1i-q8-SBd"/>
                                 <include reference="hUH-Sn-OaH"/>
                                 <exclude reference="45C-91-yfr"/>
                                 <include reference="ABr-2R-mqM"/>
-                                <include reference="WWI-lC-INa"/>
                                 <include reference="odF-iC-O8V"/>
                                 <exclude reference="thh-QY-Cff"/>
                                 <exclude reference="7oV-Ma-uQw"/>
                                 <include reference="DaZ-jF-FQC"/>
+                                <include reference="Gsf-FF-JM4"/>
+                                <include reference="dtB-q5-cZz"/>
                                 <exclude reference="gqL-t8-q4T"/>
+                                <include reference="qWh-2u-x9g"/>
                                 <exclude reference="stk-7w-tSF"/>
                                 <exclude reference="vub-Eh-81U"/>
                                 <include reference="5hB-yz-bGk"/>
@@ -533,10 +522,10 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                 <exclude reference="s6g-ig-f4q"/>
                                 <include reference="aE7-5h-Vy5"/>
                                 <include reference="b2i-Af-nxo"/>
-                                <include reference="7aX-Fu-t3g"/>
-                                <include reference="cAY-Ln-O7A"/>
-                                <include reference="pHg-Xb-LKH"/>
+                                <include reference="0sT-1C-qBj"/>
+                                <include reference="Em1-xq-xEj"/>
                                 <include reference="2sG-Wi-Uic"/>
+                                <include reference="JpM-A0-8dZ"/>
                                 <include reference="WtQ-8i-kPT"/>
                                 <include reference="ZPC-py-XKP"/>
                                 <include reference="aFt-Ly-3lP"/>

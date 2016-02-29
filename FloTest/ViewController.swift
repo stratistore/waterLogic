@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
 	//MARK: Set Variables
 	/** TEST */
@@ -45,6 +45,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		tbl_SolutionTable.hidden = true
 		tbl_SolutionTable.alpha = 0
 		txt_Instructions.hidden = false
+
+		txt_Bucket1Size.delegate=self
+		txt_Bucket2Size.delegate=self
+		txt_TargetAmount.delegate=self
 
 		print(self.btn_StartCalc.titleLabel!.text)
 
@@ -446,8 +450,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			cell.detailTextLabel?.text = item.score //"0|1"
 			return cell
 	}
-	
-	
-	
+
+	// MARK: * TEXT FIELD DELEGATE
+	func textFieldShouldReturn(textField: UITextField!) -> Bool // called when 'return' key pressed. return NO to ignore.
+	{
+		textField.resignFirstResponder()
+		return true;
+	}
+
+
 }
 
