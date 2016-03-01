@@ -28,7 +28,7 @@ class Bucket: NSObject {
 	//
 	var filledFirstFlag:Bool
 
-	// Returns a Bucket initialized with the given text and default completed value.
+	// Returns a Bucket initialized with the given text.
 	init(text: String, capacity: Int) {
 		self.text = text
 		self.lastAction = "INIT    "

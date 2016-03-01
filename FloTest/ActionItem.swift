@@ -14,7 +14,7 @@ class ActionItem: NSObject {
 	var imageToUse:String
 	var score:String
 
-	// Returns a ToDoItem initialized with the given text and default completed value.
+	// Returns a ToDoItem initialized with the given text.
 	init(text: String, imageToUse:String, score:String) {
 		self.text = text
 		self.imageToUse = imageToUse
