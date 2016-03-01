@@ -395,7 +395,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
 		if(self.txt_Instructions != nil){
          self.txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
-		}
+		} 
 		return [UIInterfaceOrientationMask.LandscapeLeft,UIInterfaceOrientationMask.LandscapeRight,UIInterfaceOrientationMask.Portrait,UIInterfaceOrientationMask.PortraitUpsideDown]
 
 	}
