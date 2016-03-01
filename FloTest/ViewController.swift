@@ -11,8 +11,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
-	// MARK: Set Variables
-	/** TEST */
+	// MARK: - VARIABLES
 	private var completeSwitch : Bool? = nil
 	//private var startingBucketSize : String! = "Large"
 	private var stepNum : Int = 0
@@ -23,7 +22,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	var actionItems = [ActionItem]()
 
 
-	// MARK: - Outlets
+	// MARK: - OUTLETS
 	@IBOutlet  var tbl_SolutionTable: UITableView!
 	@IBOutlet weak var txt_Bucket1Size: UITextField!
 	@IBOutlet weak var txt_Bucket2Size: UITextField!
@@ -67,8 +66,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	}
 
 
-	// MARK: -
-	// MARK: CALCULATE BUTTON
+	// MARK: - CALCULATE BUTTON
 	@IBAction func calculateSolution() {
 
 		resetBuckets(bucket1, bucket2:bucket2)
@@ -91,8 +89,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		solveIt()
 	}
 
-	// MARK: -
-	// MARK: SOLVE IT FUNCTION
+	// MARK: - SOLVE IT FUNCTION
 	func solveIt(){
 		print("SOLVEIT")
 		completeSwitch = false;
@@ -179,24 +176,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 	}
 
-	// MARK: -
-	// MARK: HELPER FUNCIONS
-
-	func resetBuckets (bucket1:Bucket, bucket2:Bucket){
-		stepNum = 0
-		bucket1.availableCapacity = bucket1.capacity
-		bucket2.availableCapacity = bucket2.capacity
-		bucket1.currentAmount = 0
-		bucket2.currentAmount = 0
-		bucket1.filledFirstFlag = false
-		bucket2.filledFirstFlag = false
-		txt_Solution1.hidden = false
-		txt_Solution2.hidden = false
-	}
-
-
+	// MARK: - APP LOGIC
 	func verifySolvable(bucket1:Bucket,bucket2:Bucket, goal:Int)->Bool {
-		//MARK: CHECK FOR SOLUITONS
+		// MARK: CHECK FOR SOLUITONS
 		let hasGCD = gcd(bucket1.capacity, bucket2Size: bucket2.capacity)
 		print("CHECK FOR SOLVABLE")
 		print(" bucket1 - ",bucket1.capacity)
@@ -245,22 +227,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 	}
 
-	//MARK: - FIND GCD
-	/**
-	Calculates the GCD (Greatest Common Denominator) for two numbers.
-	- Parameter bucket1Size: Integer representing the Size/Capacity of the first Bucket.
-	- Parameter bucket2Size: Integer representing the Size/Capacity of the second Bucket.
-	- Returns:  Integer - GCD of two numbers:
-	*/
-	func gcd(var bucket1Size : Int, var bucket2Size : Int) -> Int {
-		while bucket2Size != 0 {
-			(bucket1Size, bucket2Size) = (bucket2Size, bucket1Size % bucket2Size)
-		}
-		return abs(bucket1Size)
-	}
-
-
-	//MARK: FIND NEXT PATH POINT
 	/**
 	Calculates the Next Path Point in the solution.
 	- Parameter bucket1: Bucket1 Object.
@@ -270,10 +236,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	- Returns:  Bool:
 	*/
 	func findTheNextPathPoint( startingBucket: Bucket, var bucket2: Bucket, goal:Int) -> Bool {
-		///		completeSwitch = false
-
-
-		//TODO: if solvable do until solved flag is set
+		//MARK: FIND NEXT PATH POINT
 		var solved = false
 		while solved == false {
 			if(startingBucket.currentAmount == goal || bucket2.currentAmount == goal){
@@ -282,11 +245,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 				return (completeSwitch)!
 			}
 
-			//MARK:CASE HERE
-
 			if(solved == false){
 
-				//TOP
+				// MARK: o CHECK FOR TRANSFER (TOP)
 				if(bucket1.currentAmount == 0 && (solved == false)){
 					// (LARGE FIRST) TRANSFER (LARGE > SMALL)
 					transferBucketL2S(bucket2, bucketTo: bucket1)
@@ -295,22 +256,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
 					logStatus (bucket1, bucket2:bucket2, status:"Transfer")}
 
-				//RIGHT
+				// MARK: o CHECK FOR TRANSFER (RIGHT)
 				if(bucket2.currentAmount == bucket2.capacity  && (solved == false)){
 					// (LARGE FIRST) TRANSFER (SMALL > LARGE)
 					transferBucketL2S(bucket2, bucketTo: bucket1)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
 					logStatus (bucket1, bucket2:bucket2, status:"Transfer")}
 
-				//LEFT
+				// MARK: o CHECK FOR TRANSFER (LEFT)
 				if(bucket1.currentAmount > 0 && bucket1.currentAmount < bucket1.capacity && (solved == false)){
 					// (LARGE FIRST) ALWAYS FILL
 					bucket2 = self.fillBucket(bucket2)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
 					logStatus (bucket1, bucket2:bucket2, status:"Fill")}
 
-				//BOTTOM
-
+				// MARK: o CHECK FOR TRANSFER (BOTTOM)
 				if(( bucket1.currentAmount == bucket1.capacity && (solved == false))){
 					bucket1 = self.emptyBucket(bucket1)
 					solved = getScore(bucket1,bucket2: bucket2,goal:goal)
@@ -322,6 +282,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		return (true)
 	}
 
+	// MARK: - GET SCORE
 	func getScore(bucket1:Bucket, bucket2:Bucket, goal:Int)-> Bool{
 
 		if(bucket1.currentAmount == goal || bucket2.currentAmount == goal)
@@ -329,10 +290,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		else {return (false)}
 	}
 
-
 	// MARK: - ACTIONS
-	// MARK: o FILL
 	func fillBucket(bucket : Bucket) -> Bucket {
+	// MARK: o FILL
 		bucket.currentAmount = bucket.capacity
 		bucket.availableCapacity = 0
 		let lastAction = "FILLED  "
@@ -342,16 +302,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	}
 
 
-	// MARK: o EMPTY
+
 	func emptyBucket(bucket : Bucket) -> Bucket {
+ 	// MARK: o EMPTY
 		bucket.currentAmount = 0
 		bucket.availableCapacity = bucket.capacity
 		let lastAction = "EMPTIED"
 		bucket.lastAction = lastAction
 		return bucket	}
 
-	// MARK: o TRANSFER
+
 	func transferBucketL2S(bucketFrom : Bucket, bucketTo : Bucket ){
+			// MARK: o TRANSFER
 		bucketFrom.lastAction = "XFER OUT"
 		bucketTo.lastAction   = "XFER IN "
 
@@ -376,16 +338,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		}
 	}
 
-
-	//MARK: LOGS
+	// MARK: - LOG ACTIONS
 	func logStatus (bucket1:Bucket, bucket2:Bucket, status:String){
+		// MARK: o PRINT LOG TO THE DEBUG SCREEN
 		stepNum = stepNum + 1
 		print("ACTION   - STEP ",stepNum, "\tSTARTING BUCKET ", "\t[",status, "]")
 		logBucketStatus(bucket1)
 		logBucketStatus(bucket2)
 		print("\n")
 
-		//MARK :ADD STATUS DATA TO TABLE
+		// MARK: o ADD ACTION ITEM TO THE SOLUTION COLLECTION (TABLE)
 		let scoreMessage 	= String(bucket1.currentAmount)+"|"+String(bucket2.currentAmount)
 		let stepMessage 	= "\t"+String(stepNum)
 		let statusMessage 	= " - "+status
@@ -397,6 +359,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		print(bucket.lastAction, "-",bucket.text,"      - Capacity ", bucket.capacity, "\tCurrent Amount ",bucket.currentAmount, "\tAvailable Capacity ", bucket.availableCapacity)
 		bucket.lastAction = "NONE    "
 	}
+
+	// MARK: - HELPER FUNCIONS
+
+	func resetBuckets (bucket1:Bucket, bucket2:Bucket){
+		// MARK: RESET BUCKETS
+		stepNum = 0
+		bucket1.availableCapacity = bucket1.capacity
+		bucket2.availableCapacity = bucket2.capacity
+		bucket1.currentAmount = 0
+		bucket2.currentAmount = 0
+		bucket1.filledFirstFlag = false
+		bucket2.filledFirstFlag = false
+		txt_Solution1.hidden = false
+		txt_Solution2.hidden = false
+	}
+
+	//MARK: - FIND GCD
+	/**
+	Calculates the GCD (Greatest Common Denominator) for two numbers.
+	- Parameter bucket1Size: Integer representing the Size/Capacity of the first Bucket.
+	- Parameter bucket2Size: Integer representing the Size/Capacity of the second Bucket.
+	- Returns:  Integer - GCD of two numbers:
+	*/
+	func gcd(var bucket1Size : Int, var bucket2Size : Int) -> Int {
+		while bucket2Size != 0 {
+			(bucket1Size, bucket2Size) = (bucket2Size, bucket1Size % bucket2Size)
+		}
+		return abs(bucket1Size)
+	}
+	
+	
 
 
 	// MARK: -
