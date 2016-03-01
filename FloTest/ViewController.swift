@@ -131,18 +131,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			resetBuckets(bucket1, bucket2:bucket2)
 
 			//MARK: o FIND THE PATH TO SOLUITON 1
-			print("START PATH 1")
+			print("START WITH JUG 1")
+			actionItems.append(ActionItem(text: "Solution with Jug 1 first", imageToUse: "B2" , score:""))
 
 
 			bucket2 = self.fillBucket(bucket2)
 			logStatus (bucket1, bucket2:bucket2, status:"Fill")
+
 
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
 			print("SOLUTION 1 FOUND IN ", stepNum, " STEPS\n")
 
 			txt_Solution1.text  = "SOLUTION 1 = "+String(stepNum)+" STEPS"
 
-			actionItems.append(ActionItem(text: txt_Solution1.text!, imageToUse: "Finish", score:"."))
+			actionItems.append(ActionItem(text: txt_Solution1.text!, imageToUse: "B1", score:"SOLVED"))
 			tbl_SolutionTable.reloadData()
 
 
@@ -155,6 +157,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 		    // MARK: o FIND THE PATH TO SOLUITON 2
 			print("START PATH 2")
+			actionItems.append(ActionItem(text: "Solution with Jug 2 first", imageToUse: "B2" , score:""))
+			
 
 
 			bucket2 = self.fillBucket(bucket2)
@@ -164,7 +168,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
 			print("SOLUTION 2 FOUND IN ", stepNum, " STEPS\n")
 			txt_Solution2.text  = "SOLUTION 2 = "+String(stepNum)+" STEPS"
-			actionItems.append(ActionItem(text: txt_Solution2.text!, imageToUse: "Finish", score:"."))
+			actionItems.append(ActionItem(text: txt_Solution2.text!, imageToUse: "B1", score:"SOLVED"))
 
 			txt_Solution1.hidden = false
 			txt_Solution2.hidden = false
