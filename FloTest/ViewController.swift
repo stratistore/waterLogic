@@ -73,7 +73,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	}
 
 
-	@IBAction func CalculateSolution() {
+	@IBAction func calculateSolution() {
 
 		resetBuckets(bucket1, bucket2:bucket2)
 

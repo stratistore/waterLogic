@@ -183,7 +183,7 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                     <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="CalculateSolution" destination="oSr-Ma-daR" eventType="touchUpInside" id="AtS-10-6xk"/>
+                                    <action selector="calculateSolution" destination="oSr-Ma-daR" eventType="touchUpInside" id="wL5-v8-cac"/>
                                 </connections>
                             </button>
                         </subviews>
