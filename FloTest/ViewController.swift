@@ -63,6 +63,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		print(self.btn_StartCalc.titleLabel!.text)
 
 		tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+
 		//MARK:CONVERT INPUTS TO VALUES
 		txt_Bucket1Size.text	= "5"
 		txt_Bucket2Size.text 	= "3"
@@ -71,11 +72,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		//solveIt()
 	}
 
-
-	@IBAction func bucket1SizeChanged() {
-		print("BUCKET 1 CHANGED SIZE")
-
-	}
 
 	@IBAction func CalculateSolution() {
 
