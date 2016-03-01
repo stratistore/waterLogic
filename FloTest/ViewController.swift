@@ -89,8 +89,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             txt_Instructions.hidden = true
 			tbl_SolutionTable.hidden = true
 			tbl_SolutionTable.alpha = 0 //fix
-			txt_Solution2.hidden = true
-			txt_Solution1.hidden = true
+			txt_Solution2.hidden = false
+			txt_Solution1.hidden = false
 			btn_StartCalc.setTitle("VIEW INSTRUCTIONS", forState: UIControlState.Normal)
 		}
 		solveIt()
@@ -191,6 +191,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		bucket2.currentAmount = 0
 		bucket1.filledFirstFlag = false
 		bucket2.filledFirstFlag = false
+		txt_Solution1.hidden = false
+		txt_Solution2.hidden = false
 	}
 
 
@@ -208,10 +210,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		print("\nTESTS")
 		txt_Solution1.text = ""
 		txt_Solution2.text = ""
+		txt_Solution1.hidden = false
 		txt_Solution2.hidden = false
 
 		// MARK: o CHECK THAT GOAL CAN BE CONTAINED IN THE LARGETS BUCKET
-		if (goal >= bucket1.capacity && goal >= bucket2.capacity){
+		if (goal > bucket1.capacity && goal >  bucket2.capacity){
 			print("* FAIL * Goal must be smaller than the largest bucket")
 			txt_Solution2.text = "* FAIL * Goal must be smaller than the largest bucket"
 			return(false)
