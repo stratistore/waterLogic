@@ -222,7 +222,7 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JzV-hX-hOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="342"/>
+            <point key="canvasLocation" x="-75" y="108"/>
         </scene>
     </scenes>
     <resources>
