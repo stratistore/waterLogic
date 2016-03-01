@@ -92,7 +92,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	}
 
 	// MARK: -
-	//MARK: SOLVE IT FUNCTION
+	// MARK: SOLVE IT FUNCTION
 	func solveIt(){
 		print("SOLVEIT")
 		completeSwitch = false;
@@ -178,6 +178,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		}
 
 	}
+
+	// MARK: -
+	// MARK: HELPER FUNCIONS
 
 	func resetBuckets (bucket1:Bucket, bucket2:Bucket){
 		stepNum = 0
@@ -326,6 +329,54 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		else {return (false)}
 	}
 
+
+	// MARK: - ACTIONS
+	// MARK: o FILL
+	func fillBucket(bucket : Bucket) -> Bucket {
+		bucket.currentAmount = bucket.capacity
+		bucket.availableCapacity = 0
+		let lastAction = "FILLED  "
+		bucket.lastAction = lastAction
+		//logBucketStatus(bucket)
+		return bucket
+	}
+
+
+	// MARK: o EMPTY
+	func emptyBucket(bucket : Bucket) -> Bucket {
+		bucket.currentAmount = 0
+		bucket.availableCapacity = bucket.capacity
+		let lastAction = "EMPTIED"
+		bucket.lastAction = lastAction
+		return bucket	}
+
+	// MARK: o TRANSFER
+	func transferBucketL2S(bucketFrom : Bucket, bucketTo : Bucket ){
+		bucketFrom.lastAction = "XFER OUT"
+		bucketTo.lastAction   = "XFER IN "
+
+		if(bucketFrom.currentAmount < bucketTo.availableCapacity) {
+
+			let amountToTransfer    		= bucketFrom.currentAmount
+			bucketFrom.currentAmount 		= bucketFrom.currentAmount     - amountToTransfer
+			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
+			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
+			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
+
+
+		}
+		else {
+			let amountToTransfer    		= bucketFrom.currentAmount     - (bucketFrom.currentAmount - bucketTo.availableCapacity)
+			bucketFrom.currentAmount 		= bucketFrom.currentAmount     - amountToTransfer
+			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
+			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
+			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
+			
+			
+		}
+	}
+
+
 	//MARK: LOGS
 	func logStatus (bucket1:Bucket, bucket2:Bucket, status:String){
 		stepNum = stepNum + 1
@@ -348,57 +399,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	}
 
 
-
-
-
-	// MARK: - Actions
-
-	// MARK: o Fill Bucket
-	func fillBucket(bucket : Bucket) -> Bucket {
-		bucket.currentAmount = bucket.capacity
-		bucket.availableCapacity = 0
-		let lastAction = "FILLED  "
-		bucket.lastAction = lastAction
-		//logBucketStatus(bucket)
-		return bucket
-	}
-
-
-	// MARK: o Empty Bucket
-	func emptyBucket(bucket : Bucket) -> Bucket {
-		bucket.currentAmount = 0
-		bucket.availableCapacity = bucket.capacity
-		let lastAction = "EMPTIED"
-		bucket.lastAction = lastAction
-		return bucket	}
-
-	// MARK: o Transfer
-	func transferBucketL2S(bucketFrom : Bucket, bucketTo : Bucket ){
-		bucketFrom.lastAction = "XFER OUT"
-		bucketTo.lastAction   = "XFER IN "
-
-		if(bucketFrom.currentAmount < bucketTo.availableCapacity) {
-
-			let amountToTransfer    		= bucketFrom.currentAmount
-			bucketFrom.currentAmount 		= bucketFrom.currentAmount     - amountToTransfer
-			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
-			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
-			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
-
-
-		}
-		else {
-			let amountToTransfer    		= bucketFrom.currentAmount     - (bucketFrom.currentAmount - bucketTo.availableCapacity)
-			bucketFrom.currentAmount 		= bucketFrom.currentAmount     - amountToTransfer
-			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
-			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
-			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
-
-
-		}
-	}
-
-	//MARK: * ROTATION
+	// MARK: -
+	// MARK: * ROTATION
 	override func shouldAutorotate() -> Bool {
 		return true
 	}
