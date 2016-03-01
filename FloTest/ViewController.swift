@@ -216,8 +216,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			return(false)
 		}
 
-		// MARK: o CHECK THAT BUCKETS ARE NOT THE SAME SIZE
-		if ((bucket1.capacity == bucket2.capacity) && (goal != bucket2.capacity)){
+		// MARK: o CHECK THAT BUCKETS ARE NOT THE SAME SIZE (UNLESS GOAL IS TOO)
+		if ((bucket1.capacity == bucket2.capacity) && ((goal != bucket1.capacity) || (goal != bucket2.capacity))){
 			print("* FAIL * Buckets must be different sizes")
 			txt_Solution2.text = "* FAIL * Buckets must be different sizes"
 			return(false)
