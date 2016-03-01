@@ -7,381 +7,6 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FloTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" placeholder="5" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="PXc-gM-ROC">
-                                <rect key="frame" x="168" y="65" width="50" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="DVk-mb-hZQ"/>
-                                    <constraint firstAttribute="width" constant="50" id="ZuR-je-Ch2"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="pJA-tL-CM3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <action selector="bucket1SizeChanged" destination="BYZ-38-t0r" eventType="editingDidEnd" id="FX3-Ou-6wH"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" placeholder="3" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="w1A-GJ-c28">
-                                <rect key="frame" x="168" y="111" width="50" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Sjy-bW-S0W"/>
-                                    <constraint firstAttribute="height" constant="30" id="Tyh-5N-nQ2"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="gtS-Ij-Nfu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4" borderStyle="roundedRect" placeholder="4" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yNd-Yb-sJO">
-                                <rect key="frame" x="168" y="159" width="50" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="4Um-uN-V0y"/>
-                                    <constraint firstAttribute="width" constant="50" id="9cI-ow-2AW"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="VdV-aS-yBK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKj-V6-zrV">
-                                <rect key="frame" x="16" y="367" width="288" height="181"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">How to Solve the Water Jug Riddle from Die Hard 3.   You've got to diffuse a bomb by placing exactly 4 gallons of water on a sensor. The problem is, you only have a 5 gallon (18.9 L) jug and a 3 gallon jug on hand! This classic riddle, made famous in Die Hard 3, may seem impossible without a measuring cup, but it is actually remarkably simple.
-
-For the solution, click here to skip to the answer. If you want guidance and hints to solving it on your own, scroll down.                                                     
-1   Simplify the question and your options. Setting the movie aside for the moment, think of the riddle in it's most basic terms. What do you know, what's your goal, and what are your options? A simpler way to look at the riddle might be: 
-You have two empty water jugs in your hands. One holds 3 gallons of water, the other holds 5 gallons of water. You need to use these two jugs to measure exactly 4 gallons of waters.                                                              
-2  Determine where you will keep the 4 gallons of water. In order to measure out your 4 gallons, you need to put it somewhere. As John McClane rightly deduces, you couldn't possible fit it in the 3 gallon jug, which means the right answer must involve getting the right amount of water in the 5 gallon jug.    
-3   Know that, like all good riddles, you have everything you need for a solution.The solution does not involve bringing in another jug, or eyeballing the water levels perfectly, or finding fractions of jugs. You have two jugs and an unlimited supply of water. How can you use just those things to get to 4 gallons? More specifically, how can you use 3 and 5 to get to 4?
-	◦	Unlimited water means you can use or pour out as much as you want.
-	◦	You are not able to guess exactly how much water is in the jug unless you fill it all the way up.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MESSAGE: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAt-j9-giL">
-                                <rect key="frame" x="16" y="312" width="372" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INSTRUCTIONS:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcC-Jb-uTz">
-                                <rect key="frame" x="16" y="336" width="361" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JUG 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4PA-xM-rwa">
-                                <rect key="frame" x="94" y="68" width="50" height="20"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JUG 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCt-Xa-4aV">
-                                <rect key="frame" x="95" y="116" width="48" height="20"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your capacity and goals." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7H-er-pAc">
-                                <rect key="frame" x="16" y="20" width="372" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Z6m-gt-3jm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOAL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fx1-L9-FIz">
-                                <rect key="frame" x="95" y="164" width="49" height="20"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pev-jy-F5X">
-                                <rect key="frame" x="16" y="307" width="288" height="241"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scoreCell" textLabel="aS4-cG-9vO" detailTextLabel="leE-4N-1c5" imageView="6Vn-sX-hMK" style="IBUITableViewCellStyleValue1" id="B9R-De-X7c">
-                                        <rect key="frame" x="0.0" y="28" width="288" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B9R-De-X7c" id="eZT-68-YQ8">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aS4-cG-9vO">
-                                                    <rect key="frame" x="87" y="12" width="32" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="leE-4N-1c5">
-                                                    <rect key="frame" x="231" y="12" width="42" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Finish" id="6Vn-sX-hMK">
-                                                    <rect key="frame" x="15" y="0.0" width="57" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="X0F-Wo-hDI">
-                                <rect key="frame" x="16" y="269" width="361" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Lem-Vg-otO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="CALC">
-                                    <color key="titleColor" red="1" green="0.086126679325692623" blue="0.12837860674286983" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="CalculateSolution" destination="BYZ-38-t0r" eventType="touchUpInside" id="mII-ef-yBA"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ZKj-V6-zrV" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="56y-0Y-Z9q"/>
-                            <constraint firstItem="w1A-GJ-c28" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="152" id="5Q8-Ti-i0p"/>
-                            <constraint firstItem="Pev-jy-F5X" firstAttribute="leading" secondItem="KAt-j9-giL" secondAttribute="leading" id="5hB-yz-bGk"/>
-                            <constraint firstItem="fx1-L9-FIz" firstAttribute="trailing" secondItem="4PA-xM-rwa" secondAttribute="trailing" id="9cY-a0-UtP"/>
-                            <constraint firstItem="X0F-Wo-hDI" firstAttribute="top" secondItem="PXc-gM-ROC" secondAttribute="bottom" priority="200" constant="174" id="ABr-2R-mqM"/>
-                            <constraint firstItem="w1A-GJ-c28" firstAttribute="baseline" secondItem="PXc-gM-ROC" secondAttribute="baseline" constant="46" id="DLf-rk-Zut"/>
-                            <constraint firstItem="ZKj-V6-zrV" firstAttribute="top" secondItem="zcC-Jb-uTz" secondAttribute="bottom" constant="10" id="FGn-d3-uBt"/>
-                            <constraint firstItem="4PA-xM-rwa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="68" id="FKK-CZ-KFz"/>
-                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="leading" secondItem="PXc-gM-ROC" secondAttribute="leading" constant="-73" id="FeX-kE-bq2"/>
-                            <constraint firstItem="fx1-L9-FIz" firstAttribute="leading" secondItem="CCt-Xa-4aV" secondAttribute="leading" id="Gli-iK-bp3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yNd-Yb-sJO" secondAttribute="trailing" constant="158" id="Gsf-FF-JM4"/>
-                            <constraint firstItem="w1A-GJ-c28" firstAttribute="centerX" secondItem="B7H-er-pAc" secondAttribute="centerX" constant="-9" id="Hbt-FV-26f"/>
-                            <constraint firstItem="fx1-L9-FIz" firstAttribute="baseline" secondItem="yNd-Yb-sJO" secondAttribute="baseline" id="Hzc-4p-ono"/>
-                            <constraint firstItem="4PA-xM-rwa" firstAttribute="leading" secondItem="w1A-GJ-c28" secondAttribute="leading" constant="-74" id="JQg-HD-LUL"/>
-                            <constraint firstItem="4PA-xM-rwa" firstAttribute="top" secondItem="w1A-GJ-c28" secondAttribute="bottom" constant="-73" id="KU7-Ae-TiX"/>
-                            <constraint firstItem="Pev-jy-F5X" firstAttribute="bottom" secondItem="ZKj-V6-zrV" secondAttribute="bottom" id="Mw2-0N-gu7"/>
-                            <constraint firstItem="ZKj-V6-zrV" firstAttribute="top" secondItem="X0F-Wo-hDI" secondAttribute="bottom" constant="68" id="P90-8L-dyv"/>
-                            <constraint firstItem="zcC-Jb-uTz" firstAttribute="centerX" secondItem="X0F-Wo-hDI" secondAttribute="centerX" id="Qji-zf-Rw1"/>
-                            <constraint firstItem="PXc-gM-ROC" firstAttribute="top" secondItem="B7H-er-pAc" secondAttribute="bottom" constant="5" id="RUy-4B-l8L"/>
-                            <constraint firstItem="zcC-Jb-uTz" firstAttribute="leading" secondItem="ZKj-V6-zrV" secondAttribute="leading" id="Sos-4z-vX5"/>
-                            <constraint firstItem="zcC-Jb-uTz" firstAttribute="trailing" secondItem="X0F-Wo-hDI" secondAttribute="trailing" id="Thz-Nq-fXm"/>
-                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="top" secondItem="PXc-gM-ROC" secondAttribute="bottom" constant="21" id="UyQ-wy-Y20"/>
-                            <constraint firstItem="B7H-er-pAc" firstAttribute="leading" secondItem="X0F-Wo-hDI" secondAttribute="leading" id="W1t-Bt-Zcf"/>
-                            <constraint firstItem="Pev-jy-F5X" firstAttribute="trailing" secondItem="ZKj-V6-zrV" secondAttribute="trailing" id="Ycg-d2-r5H"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KAt-j9-giL" secondAttribute="trailing" constant="-11" id="aE7-5h-Vy5"/>
-                            <constraint firstItem="KAt-j9-giL" firstAttribute="leading" secondItem="zcC-Jb-uTz" secondAttribute="leading" id="b2i-Af-nxo"/>
-                            <constraint firstItem="w1A-GJ-c28" firstAttribute="top" secondItem="B7H-er-pAc" secondAttribute="bottom" constant="51" id="dnQ-28-21s"/>
-                            <constraint firstItem="yNd-Yb-sJO" firstAttribute="top" secondItem="B7H-er-pAc" secondAttribute="bottom" constant="99" id="dtB-q5-cZz"/>
-                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="centerX" secondItem="PXc-gM-ROC" secondAttribute="centerX" constant="-73.5" id="i2m-Yp-Wac"/>
-                            <constraint firstItem="ZKj-V6-zrV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kBY-GH-WGd"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZKj-V6-zrV" secondAttribute="bottom" constant="20" id="loP-D3-J6K"/>
-                            <constraint firstItem="X0F-Wo-hDI" firstAttribute="centerX" secondItem="PXc-gM-ROC" secondAttribute="centerX" constant="3.5" id="odF-iC-O8V"/>
-                            <constraint firstItem="yNd-Yb-sJO" firstAttribute="centerX" secondItem="B7H-er-pAc" secondAttribute="centerX" constant="-9" id="qQr-Ex-qe9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yNd-Yb-sJO" secondAttribute="trailing" constant="158" id="qWh-2u-x9g"/>
-                            <constraint firstItem="Pev-jy-F5X" firstAttribute="top" secondItem="X0F-Wo-hDI" secondAttribute="bottom" constant="8" symbolic="YES" id="quy-rL-oS5"/>
-                            <constraint firstItem="4PA-xM-rwa" firstAttribute="trailing" secondItem="w1A-GJ-c28" secondAttribute="trailing" constant="-74" id="t00-hq-Rfw"/>
-                            <constraint firstItem="B7H-er-pAc" firstAttribute="trailing" secondItem="KAt-j9-giL" secondAttribute="trailing" id="u8J-MV-VbM"/>
-                            <constraint firstItem="PXc-gM-ROC" firstAttribute="centerX" secondItem="B7H-er-pAc" secondAttribute="centerX" constant="-9" id="uDm-VA-qII"/>
-                            <constraint firstItem="zcC-Jb-uTz" firstAttribute="top" secondItem="KAt-j9-giL" secondAttribute="bottom" constant="3" id="umK-uQ-SCE"/>
-                            <constraint firstItem="CCt-Xa-4aV" firstAttribute="centerX" secondItem="4PA-xM-rwa" secondAttribute="centerX" id="wST-XB-k9b"/>
-                            <constraint firstItem="w1A-GJ-c28" firstAttribute="top" secondItem="B7H-er-pAc" secondAttribute="bottom" constant="51" id="zWY-Jc-Xqg"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="btn_StartCalc" destination="X0F-Wo-hDI" id="8Jg-LO-T4p"/>
-                        <outlet property="tbl_SolutionTable" destination="Pev-jy-F5X" id="K41-a9-cIt"/>
-                        <outlet property="txt_Bucket1Size" destination="PXc-gM-ROC" id="JIi-GB-aSt"/>
-                        <outlet property="txt_Bucket2Size" destination="w1A-GJ-c28" id="8bL-ri-jtV"/>
-                        <outlet property="txt_Instructions" destination="ZKj-V6-zrV" id="cWB-ZV-Yqe"/>
-                        <outlet property="txt_Solution1" destination="KAt-j9-giL" id="RCE-BV-CJn"/>
-                        <outlet property="txt_Solution2" destination="zcC-Jb-uTz" id="Dfc-NQ-ooH"/>
-                        <outlet property="txt_TargetAmount" destination="yNd-Yb-sJO" id="A0O-3S-bZh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-175.19999999999999" y="-12.779999999999999"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="yyp-Rm-bnr">
-            <objects>
-                <viewController id="K0w-nN-asf" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rdL-pc-FRB"/>
-                        <viewControllerLayoutGuide type="bottom" id="zv2-Wr-RET"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aza-cZ-YeV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L9L-ln-oJO">
-                                <rect key="frame" x="20" y="48" width="140" height="200"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BucketFull" translatesAutoresizingMaskIntoConstraints="NO" id="n6u-Ol-BPz">
-                                        <rect key="frame" x="8" y="29" width="118" height="124"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jug 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVg-fr-fhb">
-                                        <rect key="frame" x="8" y="171" width="41" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" placeholder="5" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="P1D-yI-iRQ">
-                                        <rect key="frame" x="62" y="167" width="50" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="d7c-IM-PlR"/>
-                                            <constraint firstAttribute="height" constant="30" id="eaY-cQ-nV6"/>
-                                            <constraint firstAttribute="width" constant="50" id="xj3-vg-VMn"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <action selector="bucket1SizeChanged" destination="BYZ-38-t0r" eventType="editingDidEnd" id="VbC-c0-geV"/>
-                                        </connections>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="3v5-DH-lPk"/>
-                                    <constraint firstAttribute="width" constant="140" id="ELW-YC-6az"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35b-Xo-aXD">
-                                <rect key="frame" x="160" y="48" width="140" height="200"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BucketFull" translatesAutoresizingMaskIntoConstraints="NO" id="nhJ-05-Lpn">
-                                        <rect key="frame" x="10" y="29" width="118" height="124"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jug 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9J-5n-2SB">
-                                        <rect key="frame" x="24" y="171" width="43" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="roundedRect" placeholder="3" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ujQ-Wn-OHi">
-                                        <rect key="frame" x="74" y="165" width="50" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="N9T-Gr-XKa"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="XUX-CG-q2i"/>
-                                            <constraint firstAttribute="height" constant="30" id="xet-bZ-GRb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Gum-w1-rig"/>
-                                    <constraint firstAttribute="width" constant="140" id="Sk0-Z1-Gci"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set your capacity and goals." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBN-AD-efs">
-                                <rect key="frame" x="-194" y="10" width="214" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="xLU-VW-xYD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HLG-43-r37">
-                                <rect key="frame" x="20" y="248" width="280" height="320"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BucketFull" translatesAutoresizingMaskIntoConstraints="NO" id="MnE-3C-kqG">
-                                        <rect key="frame" x="83" y="145" width="118" height="124"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwS-cX-Cy5">
-                                        <rect key="frame" x="121" y="289" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fi1-eE-CBB">
-                                        <rect key="frame" x="0.0" y="62" width="280" height="258"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scoreCell" textLabel="xgh-v8-kpy" detailTextLabel="I9h-Wi-ttC" imageView="cxz-Cy-LVz" style="IBUITableViewCellStyleValue1" id="7zG-PC-lfm">
-                                                <rect key="frame" x="0.0" y="28" width="280" height="44"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7zG-PC-lfm" id="8SA-4G-Dd3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xgh-v8-kpy">
-                                                            <rect key="frame" x="87" y="12" width="32" height="20"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I9h-Wi-ttC">
-                                                            <rect key="frame" x="223" y="12" width="42" height="20"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Finish" id="cxz-Cy-LVz">
-                                                            <rect key="frame" x="15" y="0.0" width="57" height="43"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <sections/>
-                                    </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJU-6r-Utf">
-                                        <rect key="frame" x="97" y="18" width="35" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4" borderStyle="roundedRect" placeholder="4" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bmo-0w-1By">
-                                        <rect key="frame" x="140" y="14" width="50" height="30"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="320" id="4wj-UT-65s"/>
-                                    <constraint firstAttribute="width" constant="280" id="Wh9-92-ZzZ"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="HLG-43-r37" firstAttribute="centerX" secondItem="aza-cZ-YeV" secondAttribute="centerX" id="2ct-hM-IDQ"/>
-                            <constraint firstItem="RBN-AD-efs" firstAttribute="top" secondItem="aza-cZ-YeV" secondAttribute="topMargin" constant="10" id="BIN-qS-Kl0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="35b-Xo-aXD" secondAttribute="trailing" id="GpP-M1-Z5m"/>
-                            <constraint firstItem="HLG-43-r37" firstAttribute="bottom" secondItem="aza-cZ-YeV" secondAttribute="bottomMargin" constant="2" id="KVS-Jf-Cl6"/>
-                            <constraint firstItem="HLG-43-r37" firstAttribute="leading" secondItem="RBN-AD-efs" secondAttribute="trailing" priority="750" id="LIu-kN-jY5"/>
-                            <constraint firstItem="L9L-ln-oJO" firstAttribute="top" secondItem="rdL-pc-FRB" secondAttribute="bottom" constant="28" id="RMr-Xg-NZI"/>
-                            <constraint firstItem="L9L-ln-oJO" firstAttribute="leading" secondItem="aza-cZ-YeV" secondAttribute="leadingMargin" id="S6u-Ys-pTv"/>
-                            <constraint firstItem="35b-Xo-aXD" firstAttribute="top" secondItem="rdL-pc-FRB" secondAttribute="bottom" constant="28" id="ZPb-NI-eBD"/>
-                            <constraint firstItem="RBN-AD-efs" firstAttribute="centerX" secondItem="aza-cZ-YeV" secondAttribute="centerX" id="nba-Pi-mea"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ewK-P2-NI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="167" y="-12"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="aGU-Kl-xeZ">
             <objects>
                 <viewController id="oSr-Ma-daR" customClass="ViewController" customModule="FloTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -411,9 +36,6 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <action selector="bucket1SizeChanged" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Jlx-Hs-HsT"/>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -430,9 +52,6 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <action selector="bucket1SizeChanged" destination="BYZ-38-t0r" eventType="editingDidEnd" id="VTr-ox-f1a"/>
-                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jug 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cw-jT-BYF">
                                         <rect key="frame" x="31" y="8" width="43" height="21"/>
@@ -543,9 +162,6 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <action selector="bucket1SizeChanged" destination="BYZ-38-t0r" eventType="editingDidEnd" id="fgD-i2-fro"/>
-                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn1-Pj-ZzQ">
                                         <rect key="frame" x="35" y="8" width="35" height="21"/>
@@ -568,7 +184,6 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                 </state>
                                 <connections>
                                     <action selector="CalculateSolution" destination="oSr-Ma-daR" eventType="touchUpInside" id="AtS-10-6xk"/>
-                                    <action selector="CalculateSolution" destination="BYZ-38-t0r" eventType="touchUpInside" id="gVQ-FU-MyP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -611,7 +226,6 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
         </scene>
     </scenes>
     <resources>
-        <image name="BucketFull" width="76" height="76"/>
         <image name="Finish" width="101" height="76"/>
     </resources>
 </document>

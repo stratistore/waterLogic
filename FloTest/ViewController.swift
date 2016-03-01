@@ -136,20 +136,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 		if((solvable) == true){
 
-			//MARK: FIND THE PATH TO SOLUTION 1
-			print("PATH 1")
 
+			//MARK: SET BUCKETS AND GOAL AMOUNTS
 			bucket1.capacity = a
 			bucket2.capacity = b
 			goal 			 = c
 			resetBuckets(bucket1, bucket2:bucket2)
 
+			// MARK: FIND THE PATH TO SOLUITON 1
+			print("START PATH 1")
 
-			// MARK: BEGIN BY FILLING A BUCKET
+
 			bucket2 = self.fillBucket(bucket2)
 			logStatus (bucket1, bucket2:bucket2, status:"Fill")
 
-			// MARK: FIND THE PATH TO SOLUITON 2
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
 			print("SOLUTION 1 FOUND IN ", stepNum, " STEPS\n")
 
@@ -159,20 +159,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			tbl_SolutionTable.reloadData()
 
 
-			print("PATH 2")
-
+			//MARK: SWITCH BUCKETS AMOUNTS
 			bucket1.capacity = b
 			bucket2.capacity = a
 			goal 			 = c
 			resetBuckets(bucket1, bucket2:bucket2)
 
-			// MARK: BEGIN BY FILLING A BUCKET
-			//			bucket1.filledFirstFlag = false
-			//			bucket2.filledFirstFlag = true
+
+		    // MARK: FIND THE PATH TO SOLUITON 2
+			print("START PATH 2")
+
+
 			bucket2 = self.fillBucket(bucket2)
 			logStatus (bucket1, bucket2:bucket2, status:"Fill")
 
-			// MARK: FIND THE PATH TO SOLUITON 2
+
 			self.findTheNextPathPoint(bucket1, bucket2: bucket2, goal:goal)
 			print("SOLUTION 2 FOUND IN ", stepNum, " STEPS\n")
 			txt_Solution2.text  = "SOLUTION 2 = "+String(stepNum)+" STEPS"
