@@ -34,37 +34,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	@IBOutlet weak var txt_Instructions: UITextView!
 
 
+
+	override func viewWillAppear(animated: Bool) {
+		txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
+		txt_Instructions.setNeedsLayout()
+
+	}
+
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+
+		//MARK: SETUP VIEW DELEGATES & SUBVIEWS
 		if(tbl_SolutionTable.dataSource == nil){
 			tbl_SolutionTable.dataSource = self
 			tbl_SolutionTable.delegate = self
 			tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 		}
 
-		tbl_SolutionTable.hidden = true
-		tbl_SolutionTable.alpha = 0
-		txt_Instructions.hidden = false
-
-		 
-		txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
-		txt_Instructions.setNeedsLayout()
-
-
 		txt_Bucket1Size.delegate=self
 		txt_Bucket2Size.delegate=self
 		txt_TargetAmount.delegate=self
 
-		print(self.btn_StartCalc.titleLabel!.text)
+		tbl_SolutionTable.hidden = true
+		tbl_SolutionTable.alpha = 0 // fix
+		txt_Instructions.hidden = false
 
-		self.btn_StartCalc!.titleLabel!.text = "PRESS WHEN READY"
+		 
+
+
 		btn_StartCalc.setTitle("PRESS WHEN READY", forState: UIControlState.Normal)
-		print(self.btn_StartCalc.titleLabel!.text)
 
-		tbl_SolutionTable.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-
-		//MARK:CONVERT INPUTS TO VALUES
+		//MARK:SET VALUES TO MATCH DIE HARD EXAMPLE
 		txt_Bucket1Size.text	= "5"
 		txt_Bucket2Size.text 	= "3"
 		txt_TargetAmount.text 	= "4"
@@ -392,7 +393,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	}
 
 	override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+		if(self.txt_Instructions != nil){
+         self.txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
+		}
 		return [UIInterfaceOrientationMask.LandscapeLeft,UIInterfaceOrientationMask.LandscapeRight,UIInterfaceOrientationMask.Portrait,UIInterfaceOrientationMask.PortraitUpsideDown]
+
 	}
 
 	// MARK: * MEMORY MANAGEMENT
