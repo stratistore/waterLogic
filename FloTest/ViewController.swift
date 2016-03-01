@@ -11,7 +11,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
-	//MARK: Set Variables
+	// MARK: Set Variables
 	/** TEST */
 	private var completeSwitch : Bool? = nil
 	//private var startingBucketSize : String! = "Large"
@@ -33,19 +33,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	@IBOutlet weak var txt_Solution2: UILabel!
 	@IBOutlet weak var txt_Instructions: UITextView!
 
-
-
-	override func viewWillAppear(animated: Bool) {
-//		txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
-//		txt_Instructions.setNeedsLayout()
-
-	}
-
-
+	// MARK: -
+	// MARK: * VIEW LIFECYCLE
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		//MARK: SETUP VIEW DELEGATES & SUBVIEWS
+		// MARK: o SETUP VIEW DELEGATES & SUBVIEWS
 		if(tbl_SolutionTable.dataSource == nil){
 			tbl_SolutionTable.dataSource = self
 			tbl_SolutionTable.delegate = self
@@ -65,7 +58,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 		btn_StartCalc.setTitle("PRESS WHEN READY", forState: UIControlState.Normal)
 
-		//MARK:SET VALUES TO MATCH DIE HARD EXAMPLE
+		//MARK: o SET VALUES TO MATCH DIE HARD EXAMPLE
 		txt_Bucket1Size.text	= "5"
 		txt_Bucket2Size.text 	= "3"
 		txt_TargetAmount.text 	= "4"
@@ -74,6 +67,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	}
 
 
+	// MARK: -
+	// MARK: CALCULATE BUTTON
 	@IBAction func calculateSolution() {
 
 		resetBuckets(bucket1, bucket2:bucket2)
@@ -96,13 +91,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		solveIt()
 	}
 
-
+	// MARK: -
+	//MARK: SOLVE IT FUNCTION
 	func solveIt(){
 		print("SOLVEIT")
 		completeSwitch = false;
 
 
-		//MARK:INIT TABLEVIEW
+		//MARK: o INIT TABLEVIEW
 		if actionItems.count > 0 {
 			print("UI - CLEAR OLD TABLE ROWS")
 			actionItems.removeAll()
@@ -114,14 +110,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		let b:Int! = Int(txt_Bucket2Size.text!)
 		let c:Int! = Int(txt_TargetAmount.text!)
 
-		//MARK: INIT BUCKETS FROM INPUT
+		//MARK: o INIT BUCKETS FROM INPUT
 
 		bucket1.capacity = a
 		bucket2.capacity = b
 		goal 			 = c
 
 
-		//MARK: CHECK IF SOLVABLE
+		//MARK: o CHECK IF SOLVABLE
 		solvable = verifySolvable(bucket1,bucket2:bucket2,goal:goal)
 		print("SOLVABLE ",solvable," FOR THE GOAL OF ",String(goal),", USING BUCKET SIZES OF ",String(bucket1.capacity)," AND ",String(bucket2.capacity),".\n")
 
@@ -131,13 +127,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		if((solvable) == true){
 
 
-			//MARK: SET BUCKETS AND GOAL AMOUNTS
+			//MARK: o SET BUCKETS AND GOAL AMOUNTS
 			bucket1.capacity = b
 			bucket2.capacity = a
 			goal 			 = c
 			resetBuckets(bucket1, bucket2:bucket2)
 
-			// MARK: FIND THE PATH TO SOLUITON 1
+			//MARK: o FIND THE PATH TO SOLUITON 1
 			print("START PATH 1")
 
 
@@ -153,14 +149,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			tbl_SolutionTable.reloadData()
 
 
-			//MARK: SWITCH BUCKETS AMOUNTS
+			//MARK: o SWITCH BUCKETS AMOUNTS
 			bucket1.capacity = a
 			bucket2.capacity = b
 			goal 			 = c
 			resetBuckets(bucket1, bucket2:bucket2)
 
 
-		    // MARK: FIND THE PATH TO SOLUITON 2
+		    // MARK: o FIND THE PATH TO SOLUITON 2
 			print("START PATH 2")
 
 
@@ -206,7 +202,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		print(" prime   - ",hasGCD," [BUCKET SIZES MUST BE RELATIVELY PRIME (i.e. GCD = 1)]")
 
 
-		// MARK: TESTS
+		// MARK: o START TESTS
 		print("\nTESTS")
 		txt_Solution1.text = ""
 		txt_Solution2.text = ""
