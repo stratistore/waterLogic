@@ -498,6 +498,7 @@
 				D79A2E071C80708300518970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D79A2E081C80708300518970 /* Build configuration list for PBXNativeTarget "FloTestTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +507,7 @@
 				D79A2E0A1C80708300518970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D79A2E0B1C80708300518970 /* Build configuration list for PBXNativeTarget "FloTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +516,7 @@
 				D79A2E0D1C80708300518970 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

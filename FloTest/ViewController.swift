@@ -42,9 +42,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			tbl_SolutionTable.delegate = self
 			tbl_SolutionTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 		}
+
 		tbl_SolutionTable.hidden = true
 		tbl_SolutionTable.alpha = 0
 		txt_Instructions.hidden = false
+
+		 
+		txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
+		txt_Instructions.setNeedsLayout()
+
 
 		txt_Bucket1Size.delegate=self
 		txt_Bucket2Size.delegate=self
