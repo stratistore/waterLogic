@@ -36,8 +36,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
 	override func viewWillAppear(animated: Bool) {
-		txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
-		txt_Instructions.setNeedsLayout()
+//		txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
+//		txt_Instructions.setNeedsLayout()
 
 	}
 
@@ -102,12 +102,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		completeSwitch = false;
 
 
-
-
-
 		//MARK:INIT TABLEVIEW
 		if actionItems.count > 0 {
-			print("REMOVE")
+			print("UI - CLEAR OLD TABLE ROWS")
 			actionItems.removeAll()
 			tbl_SolutionTable.reloadData()
 			return
@@ -123,10 +120,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		bucket2.capacity = b
 		goal 			 = c
 
-		print("2")
+
 		//MARK: CHECK IF SOLVABLE
 		solvable = verifySolvable(bucket1,bucket2:bucket2,goal:goal)
-		print("SOLVABLE ",solvable,"\n\nSOLUTION STEPS\n")
+		print("SOLVABLE ",solvable," FOR THE GOAL OF ",String(goal),", USING BUCKET SIZES OF ",String(bucket1.capacity)," AND ",String(bucket2.capacity),".\n")
 
 
 
@@ -135,8 +132,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
 			//MARK: SET BUCKETS AND GOAL AMOUNTS
-			bucket1.capacity = a
-			bucket2.capacity = b
+			bucket1.capacity = b
+			bucket2.capacity = a
 			goal 			 = c
 			resetBuckets(bucket1, bucket2:bucket2)
 
@@ -157,8 +154,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
 			//MARK: SWITCH BUCKETS AMOUNTS
-			bucket1.capacity = b
-			bucket2.capacity = a
+			bucket1.capacity = a
+			bucket2.capacity = b
 			goal 			 = c
 			resetBuckets(bucket1, bucket2:bucket2)
 
@@ -176,8 +173,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			txt_Solution2.text  = "SOLUTION 2 = "+String(stepNum)+" STEPS"
 			actionItems.append(ActionItem(text: txt_Solution2.text!, imageToUse: "Finish", score:"."))
 
-			txt_Solution1.hidden = true
-			txt_Solution2.hidden = true
+			txt_Solution1.hidden = false
+			txt_Solution2.hidden = false
 			tbl_SolutionTable.reloadData()
 			tbl_SolutionTable.hidden = false
 			tbl_SolutionTable.alpha=1
@@ -211,21 +208,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		print("\nTESTS")
 		txt_Solution1.text = ""
 		txt_Solution2.text = ""
-		if (goal > bucket1.capacity && goal > bucket2.capacity){
+		txt_Solution2.hidden = false
+
+		// MARK: o CHECK THAT GOAL CAN BE CONTAINED IN THE LARGETS BUCKET
+		if (goal >= bucket1.capacity && goal >= bucket2.capacity){
 			print("* FAIL * Goal must be smaller than the largest bucket")
 			txt_Solution2.text = "* FAIL * Goal must be smaller than the largest bucket"
 			return(false)
 		}
 
+		// MARK: o CHECK THAT BUCKETS ARE NOT THE SAME SIZE
 		if ((bucket1.capacity == bucket2.capacity) && (goal != bucket2.capacity)){
 			print("* FAIL * Buckets must be different sizes")
 			txt_Solution2.text = "* FAIL * Buckets must be different sizes"
 			return(false)
 		}
 
-		if (hasGCD == 1 || bucket1.capacity == goal || bucket2.capacity == goal || bucket1.capacity - bucket2.capacity == abs(goal)){
+		// MARK: o CHECK FOR QUICK WIN
+		if (bucket1.capacity == goal || bucket2.capacity == goal){
+			print("* TOO EASY * TRY AGAIN - GOAL = BUCKET SIZE")
+			txt_Solution2.text = "* TOO EASY * TRY AGAIN - GOAL = BUCKET SIZE"
 			return(true)
 		}
+
+		// MARK: o CHECK THAT SIZES ARE RELATIVELY PRIME (GCD = 1)
+		if (hasGCD == 1  ){ //|| bucket1.capacity - bucket2.capacity == abs(goal)
+			print("TESTS PASSED - CALCULATING SOLUTIONS")
+			txt_Solution2.text = "TESTS PASSED - CALCULATING SOLUTIONS"
+			return(true)
+		}
+
 		txt_Solution2.text = "* FAIL - NO SOLUTION * "
 		return(false)
 
@@ -395,7 +407,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
 		if(self.txt_Instructions != nil){
          self.txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
-		} 
+		}
 		return [UIInterfaceOrientationMask.LandscapeLeft,UIInterfaceOrientationMask.LandscapeRight,UIInterfaceOrientationMask.Portrait,UIInterfaceOrientationMask.PortraitUpsideDown]
 
 	}
