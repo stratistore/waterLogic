@@ -83,14 +83,14 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" pagingEnabled="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-72-suQ">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-72-suQ">
                                         <rect key="frame" x="8" y="51" width="304" height="343"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <mutableString key="text">How to Solve the Water Jug Riddle from Die Hard 3.
 
 You've got to diffuse a bomb by placing exactly 4 gallons of water on a sensor. The problem is, you only have a 5 gallon (18.9 L) jug and a 3 gallon jug on hand! This classic riddle, made famous in Die Hard 3, may seem impossible without a measuring cup, but it is actually remarkably simple.
 
-For the solution, click here to skip to the answer. If you want guidance and hints to solving it on your own, scroll down.                                                     
+For the solution, click the button above to skip to the answer. If you want guidance and hints to solving it on your own, scroll down.                                                     
 1   Simplify the question and your options. Setting the movie aside for the moment, think of the riddle in it's most basic terms. What do you know, what's your goal, and what are your options? A simpler way to look at the riddle might be: 
 You have two empty water jugs in your hands. One holds 3 gallons of water, the other holds 5 gallons of water. You need to use these two jugs to measure exactly 4 gallons of waters.                                                              
 2  Determine where you will keep the 4 gallons of water. In order to measure out your 4 gallons, you need to put it somewhere. As John McClane rightly deduces, you couldn't possible fit it in the 3 gallon jug, which means the right answer must involve getting the right amount of water in the 5 gallon jug.    
@@ -100,7 +100,7 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XQV-i3-fLZ">
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XQV-i3-fLZ">
                                         <rect key="frame" x="0.0" y="51" width="320" height="351"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
