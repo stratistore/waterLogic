@@ -356,6 +356,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		tbl_SolutionTable.reloadData()
 	}
 	func logBucketStatus(bucket:Bucket){
+		// MARK: o LOG BUCKET STATUS (DEBUG WINDOW ONLY)
 		print(bucket.lastAction, "-",bucket.text,"      - Capacity ", bucket.capacity, "\tCurrent Amount ",bucket.currentAmount, "\tAvailable Capacity ", bucket.availableCapacity)
 		bucket.lastAction = "NONE    "
 	}
