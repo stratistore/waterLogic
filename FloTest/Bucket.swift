@@ -24,7 +24,6 @@ class Bucket: NSObject {
 	// An Int value that determines the available capacity of this bucket.
 	var  availableCapacity: Int
 
-
 	//
 	var filledFirstFlag:Bool
 

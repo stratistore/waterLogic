@@ -3,7 +3,7 @@
 //  FloTest
 //
 //  Created by dev on 26/02/2016.
-//  Copyright © 2016 dev. All rights reserved. 
+//  Copyright © 2016 dev. All rights reserved.
 //
 
 import UIKit
@@ -52,7 +52,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		tbl_SolutionTable.alpha = 0 // fix
 		txt_Instructions.hidden = false
 
-		 
+
 
 
 		btn_StartCalc.setTitle("PRESS WHEN READY", forState: UIControlState.Normal)
@@ -72,14 +72,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		resetBuckets(bucket1, bucket2:bucket2)
 
 		if (txt_Instructions.hidden == true){
-		    txt_Instructions.hidden = false
+			txt_Instructions.hidden = false
 			tbl_SolutionTable.hidden = true
 			tbl_SolutionTable.alpha = 0 //fix for issue
 			txt_Solution2.hidden = false
 			txt_Solution1.hidden = false
 			btn_StartCalc.setTitle("CALCULATE SOLUTION", forState: UIControlState.Normal)
 		}else{
-            txt_Instructions.hidden = true
+			txt_Instructions.hidden = true
 			tbl_SolutionTable.hidden = true
 			tbl_SolutionTable.alpha = 0 //fix
 			txt_Solution2.hidden = false
@@ -155,7 +155,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			resetBuckets(bucket1, bucket2:bucket2)
 
 
-		    // MARK: o FIND THE PATH TO SOLUITON 2
+			// MARK: o FIND THE PATH TO SOLUITON 2
 			print("START PATH 2")
 			actionItems.append(ActionItem( text:"", imageToUse: "B2" ,score:"NOW START BY FILLING JUG 2"))
 
@@ -297,7 +297,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 	// MARK: - ACTIONS
 	func fillBucket(bucket : Bucket) -> Bucket {
-	// MARK: o FILL
+		// MARK: o FILL
 		bucket.currentAmount = bucket.capacity
 		bucket.availableCapacity = 0
 		let lastAction = "FILLED  "
@@ -318,7 +318,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
 	func transferBucketL2S(bucketFrom : Bucket, bucketTo : Bucket ){
-			// MARK: o TRANSFER
+		// MARK: o TRANSFER
 		bucketFrom.lastAction = "XFER OUT"
 		bucketTo.lastAction   = "XFER IN "
 
@@ -338,8 +338,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 			bucketFrom.availableCapacity 	= bucketFrom.capacity 		   - bucketFrom.currentAmount
 			bucketTo.currentAmount   		= bucketTo.currentAmount       + amountToTransfer
 			bucketTo.availableCapacity   	= bucketTo.capacity            - bucketTo.currentAmount
-			
-			
+
+
 		}
 	}
 
@@ -394,8 +394,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		}
 		return abs(bucket1Size)
 	}
-	
-	
+
+
 
 
 	// MARK: -
@@ -406,7 +406,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 	override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
 		if(self.txt_Instructions != nil){
-         self.txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
+			self.txt_Instructions.scrollRangeToVisible(NSMakeRange(0, 0))
 		}
 		return [UIInterfaceOrientationMask.LandscapeLeft,UIInterfaceOrientationMask.LandscapeRight,UIInterfaceOrientationMask.Portrait,UIInterfaceOrientationMask.PortraitUpsideDown]
 
@@ -446,7 +446,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		textField.resignFirstResponder()
 		return true;
 	}
-
-
+	
+	
 }
 
