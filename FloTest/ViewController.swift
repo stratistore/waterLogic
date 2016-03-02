@@ -157,7 +157,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 			// MARK: o FIND THE PATH TO SOLUITON 2
 			print("START PATH 2")
-			actionItems.append(ActionItem( text:"", imageToUse: "B2" ,score:"NOW START BY FILLING JUG 2"))
+			actionItems.append(ActionItem( text:"", imageToUse: "B2" ,score:"NOW JUG 2 FIRST"))
 
 
 
