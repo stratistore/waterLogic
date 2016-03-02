@@ -86,7 +86,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-72-suQ">
                                         <rect key="frame" x="8" y="51" width="304" height="343"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <mutableString key="text">How to Solve the Water Jug Riddle from Die Hard 3.
+                                        <string key="text">How to Solve the Water Jug Riddle from Die Hard 3.
 
 You've got to diffuse a bomb by placing exactly 4 gallons of water on a sensor. The problem is, you only have a 5 gallon (18.9 L) jug and a 3 gallon jug on hand! This classic riddle, made famous in Die Hard 3, may seem impossible without a measuring cup, but it is actually remarkably simple.
 
@@ -96,7 +96,7 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
 2  Determine where you will keep the 4 gallons of water. In order to measure out your 4 gallons, you need to put it somewhere. As John McClane rightly deduces, you couldn't possible fit it in the 3 gallon jug, which means the right answer must involve getting the right amount of water in the 5 gallon jug.    
 3   Know that, like all good riddles, you have everything you need for a solution.The solution does not involve bringing in another jug, or eyeballing the water levels perfectly, or finding fractions of jugs. You have two jugs and an unlimited supply of water. How can you use just those things to get to 4 gallons? More specifically, how can you use 3 and 5 to get to 4?
 	◦	Unlimited water means you can use or pour out as much as you want.
-	◦	You are not able to guess exactly how much water is in the jug unless you fill it all the way up.</mutableString>
+	◦	You are not able to guess exactly how much water is in the jug unless you fill it all the way up.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -224,7 +224,7 @@ You have two empty water jugs in your hands. One holds 3 gallons of water, the o
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JzV-hX-hOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-75" y="108"/>
+            <point key="canvasLocation" x="34" y="109"/>
         </scene>
     </scenes>
     <resources>

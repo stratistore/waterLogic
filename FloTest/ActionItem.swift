@@ -3,7 +3,7 @@
 //  WaterLogic
 //
 //  Created by dev on 23/02/2016.
-//  Copyright © 2016 dev. All rights reserved.  
+//  Copyright © 2016 dev. All rights reserved.   
 //
 
 import UIKit
